@@ -1,0 +1,14 @@
+<view class="container">
+  
+  <view class="dream-list">
+    <block wx:for-items="{{dreams}}" wx:for-item="item">
+      <view id="{{index}}" class="cellview" bindtap="didSelectCell" >
+        <image class="cellimage" mode="scaleToFill" src="{{item.large_avatar}}"/>
+        <view class="celllabel">
+          <text class="celltext" >{{item.name}}</text>
+          <text class="celldetail">{{item.desc}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

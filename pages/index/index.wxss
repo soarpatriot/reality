@@ -23,5 +23,8 @@
 .slogan{
   vertical-align: middle;
   font-size: 18px;
-  color:chartreuse;
+  color:brown;
+}
+.hope-btn{
+  margin-top: 30px;
 }

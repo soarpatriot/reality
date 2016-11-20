@@ -5,8 +5,8 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#4DBBFF",
     "navigationBarTitleText": "梦想照进现实",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"white"
   }
 }

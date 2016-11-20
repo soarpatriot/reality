@@ -11,4 +11,6 @@
   <view class="slogan">
     <text>{{slogan}}</text>
   </view>
+  
+  <button class="hope-btn" bindtap="goHope">希望之门</button>
 </view>

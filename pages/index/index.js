@@ -7,6 +7,11 @@ Page({
     userInfo: {}
   },
   //事件处理函数
+  goHope: function(){
+    wx.navigateTo({
+      url: '../dreams/dreams'
+    })
+  },
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
