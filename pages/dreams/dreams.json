@@ -1,19 +1,14 @@
 {
-
   "tabBar": {
-    "color": "#dddddd",
+    "color": "#333",
     "selectedColor": "#3cc51f",
     "borderStyle": "black",
     "backgroundColor": "#000",
     "list": [{
-      "pagePath": "page/dreams/dreams",
-      "iconPath": "images/air.png",
-      "selectedIconPath": "images/air.png",
+      "pagePath": "pages/dreams/dreams",
       "text": "梦想"
     }, {
-      "pagePath": "page/dreams/dreams",
-      "iconPath": "images/air.png",
-      "selectedIconPath": "images/air.png",
+      "pagePath": "pages/index/index",
       "text": "我的"
     }]
   },

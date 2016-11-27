@@ -1,11 +1,16 @@
-<view class="container">
+<view class="container main-container">
   
   <view class="dream-list">
     <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="dr">
-      <view id="{{index}}" class="cellview">
-          <text class="celltext" >{{item.dream}}</text>
-          <text class="celldetail">{{item.reality}}</text>
-          <text class="celldetail">{{item.progress}}</text>
+      <view id="{{index}}" class="one-dream">
+          <view>
+              <image class="avatar" mode="aspectFit" src="{{item.avatar_url}}"></image>
+
+          </view>
+          <view class="one-dream-content">
+           
+            <navigator url="show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
+          </view>
       </view>
     </block>
   </view>

@@ -1,0 +1,9 @@
+/* pages/posts/posts.wxss */
+.section {
+    margin-bottom:20px;
+}
+
+.publish-btn{
+    width: 50%;
+    font-size: 14px;
+}

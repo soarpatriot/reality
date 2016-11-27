@@ -2,6 +2,8 @@
   "pages":[
     "pages/index/index",
     "pages/dreams/dreams",
+    "pages/dreams/show",
+    "pages/posts/posts",
     "pages/logs/logs"
   ],
   "window":{
@@ -11,19 +13,20 @@
     "navigationBarTextStyle":"white"
   },
   "tabBar": {
-    "color": "#dddddd",
+   
     "selectedColor": "#3cc51f",
     "borderStyle": "black",
-    "backgroundColor": "#000",
+   
     "list": [{
-      "pagePath": "page/dreams/dreams",
-      "iconPath": "images/air.png",
-      "selectedIconPath": "images/air.png",
+      "pagePath": "pages/dreams/dreams",
       "text": "梦想"
-    }, {
-      "pagePath": "page/dreams/dreams",
-      "iconPath": "images/air.png",
-      "selectedIconPath": "images/air.png",
+    }, 
+    {
+      "pagePath": "pages/posts/posts",
+      "text": "创建梦想"
+    },
+    {
+      "pagePath": "pages/index/index",
       "text": "我的"
     }]
   },

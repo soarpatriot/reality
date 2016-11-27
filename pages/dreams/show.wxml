@@ -1,0 +1,12 @@
+<view class="container main-container">
+  
+  <view class="dream-list">
+      <view class="one-dream">
+          
+          <view class="one-dream-content">
+           
+            <view>{{dream.dream}}</view>
+          </view>
+      </view>
+  </view>
+</view>
