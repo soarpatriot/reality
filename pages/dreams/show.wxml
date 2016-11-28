@@ -2,10 +2,16 @@
   
   <view class="dream-list">
       <view class="one-dream">
-          
+          <view>
+              <image class="avatar" mode="aspectFit" src="{{dream.avatar_url}}"></image>
+          </view>
           <view class="one-dream-content">
-           
-            <view>{{dream.dream}}</view>
+            <view class="dream-item">{{dream.nickname}}</view>
+            <view class="dream-item">梦想： {{dream.dream}}</view>
+            <view class="dream-item">现实： {{dream.reality}}</view>
+            <view class="dream-item">完成： 
+              <progress percent="{{dream.progress}}" show-info />
+            </view>
           </view>
       </view>
   </view>

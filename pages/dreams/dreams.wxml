@@ -1,6 +1,6 @@
 <view class="container main-container">
   
-  <view class="dream-list">
+
     <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="dr">
       <view id="{{index}}" class="one-dream">
           <view>
@@ -13,5 +13,5 @@
           </view>
       </view>
     </block>
-  </view>
+ 
 </view>
