@@ -1,17 +1,27 @@
-<view class="container main-container">
+<view class="container">
   
 
     <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="dr">
       <view id="{{index}}" class="one-dream">
-          <view>
-              <image class="avatar" mode="aspectFit" src="{{item.avatar_url}}"></image>
+          <view class="content-area">
+            <view class="avatar-view">
+                <image class="avatar" mode="scaleToFill" src="{{item.avatar_url}}"></image>
 
+            </view>
+            <view class="one-dream-content">
+                <text class="nickname">{{item.nickname}}</text>
+                <navigator class="dream" url="show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
+
+
+            </view>
           </view>
-          <view class="one-dream-content">
-           
-            <navigator url="show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
-          </view>
+          <view class="up-area">
+                <button plain="true" size="mini" id="up-btn">
+                    <image class="up-image" src="../../images/up_button.png" background-size="cover"></image>
+                </button>
+           </view>
       </view>
+
     </block>
  
 </view>
