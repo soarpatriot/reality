@@ -1,0 +1,11 @@
+<view class="splash"
+bindtap="skipToMain" animation="{{animationData}}">
+  <view class="landing">
+    <view >
+        <image class="userinfo-avatar" src="../../images/air.png" background-size="cover"></image>
+    </view>
+    <view class="slogan">
+        <text>{{slogan}}</text>
+    </view>
+  </view>
+</view>

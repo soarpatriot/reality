@@ -1,0 +1,34 @@
+
+.splash{
+  
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+}
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  display: block;
+  width: 240rpx;
+  height: 240rpx;
+  margin: 20rpx;
+}
+
+.landing{
+  margin-top: 200rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.slogan{
+  vertical-align: middle;
+  font-size: 18px;
+  color:brown;
+}
