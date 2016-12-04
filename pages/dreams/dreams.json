@@ -1,21 +1,4 @@
 {
-  "tabBar": {
-    "color": "#333",
-    "selectedColor": "#3cc51f",
-    "borderStyle": "black",
-    "backgroundColor": "#000",
-    "list": [{
-      "pagePath": "pages/dreams/dreams",
-      "text": "梦想"
-    }, {
-      "pagePath": "pages/index/index",
-      "text": "我的"
-    }]
-  },
-  "networkTimeout": {
-    "request": 10000,
-    "connectSocket": 10000,
-    "uploadFile": 10000,
-    "downloadFile": 10000
-  }
+  "navigationBarTitleText": "我的梦想",
+  "enablePullDownRefresh": true
 }

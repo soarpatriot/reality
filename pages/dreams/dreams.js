@@ -1,6 +1,11 @@
 Page({
   data: {
-    dreams: []
+    loading: false,
+    windowHeight: 0,
+    windowWidth: 0,
+    up: "up_button.png",
+    dreams: [],
+    animationData: {}
   },
 
   //view加载
@@ -22,8 +27,10 @@ Page({
         var dreams = res.data.data;
         console.log( dreams );
         that.setData( {
-          dreams: dreams
+          dreams: dreams,
+          loading: true
         })
+        
         //that.update()
       },
       fail: function(error){
@@ -31,12 +38,56 @@ Page({
       }
     });
   },
+  onShow: function(e) {
+    wx.getSystemInfo({
+      success: (res) => {
+        this.setData({
+          windowHeight: res.windowHeight,
+          windowWidth: res.windowWidth
+        })
+      }
+    })
+    var animation = wx.createAnimation({
+      duration: 1000,
+        timingFunction: 'ease',
+    })
 
+    this.animation = animation
+  },
+  up: function( e ){
+     console.log(e.src)
+  },
+  refresh: function() {
+    // 下拉刷新，重新加载数据； 
+    // TODO，不重新加载，只更新对应列表；
+    console.log("pull");
+    this.setData( {
+          loading: false
+    })
+    
+    this.onLoad()
+  },
+  onPullDownRefresh: function() {
+    // Do something when pull down.
+     console.log('刷新')
+     this.setData( {
+          loading: false
+    })
+    this.onLoad()
+    wx.stopPullDownRefresh();
+ },
   formSubmit: function(e) {
     var d = e.detail.value
     var id = d.id 
-    
+    var img = d.image
+    //this.animation.scale(2, 2).step()
+    //this.animation.scale(0.5,0.5).step()
+    //this.setData({
+    //  animationData: this.animation.export()
+    //})
+    this.setData({up: "up_button_blue.png"})
     console.log("id info ......." + id)
+    console.log("img info ......." + img)
     
   }
 })

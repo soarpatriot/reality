@@ -1,5 +1,8 @@
-<view class="container">
-  
+
+<loading hidden="{{loading}}">
+  加载中...
+</loading>
+ <scroll-view style="height: {{windowHeight}}px; width: {{windowWidth}}px; " scroll-y="true" bindscrolltoupper="refresh"> 
 
     <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="dr">
       <view id="{{index}}" class="one-dream">
@@ -11,6 +14,7 @@
             <view class="one-dream-content">
                 <text class="nickname">{{item.nickname}}</text>
                 <navigator class="dream" url="show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
+                <text class="nickname">{{item.created_at}}</text>
 
 
             </view>
@@ -19,7 +23,12 @@
             <input name="id" class="dream-id-input" type="hidden" value="{{item.id}}"/>
             <view class="up-area">
                 <button form-type="submit" class="up-btn" name="{{item.id}}">
-                    <image class="up-image" src="../../images/up_button.png" background-size="cover"></image>
+                    <image animation="{{animationData}}" 
+                    name="image" 
+                    bindtap="up"
+                    class="up-image" 
+                    src="../../images/up_button.png"
+                     background-size="cover"></image>
                 </button>
             </view>
           </form>
@@ -27,5 +36,5 @@
       </view>
 
     </block>
- 
-</view>
+  </scroll-view>
+
