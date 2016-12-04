@@ -41,12 +41,15 @@
    width: 40rpx;
    height: 40rpx; 
 }
-#up-btn{
-    width: 60rpx;
-    height: 60rpx;
+.up-btn{
+    line-height: 1;
     padding-left: 0;
-    border: 0px;
-    margin-right: 0;
+    padding-right: 0;
+    border: 0 solid #eee;
+    margin-right: 20rpx;
+    background-color: #fff;
+    left: 0;
+    top: 0;
 }
 
 .up-area{
@@ -55,4 +58,12 @@
     flex-direction: column;
     justify-content: flex-end;
     
+}
+
+button::after{
+    border: 0 solid #fff;
+}
+
+.dream-id-input{
+    display: none;
 }

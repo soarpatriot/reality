@@ -30,5 +30,13 @@ Page({
           console.log(error)
       }
     });
+  },
+
+  formSubmit: function(e) {
+    var d = e.detail.value
+    var id = d.id 
+    
+    console.log("id info ......." + id)
+    
   }
 })

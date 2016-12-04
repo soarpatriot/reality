@@ -15,11 +15,15 @@
 
             </view>
           </view>
-          <view class="up-area">
-                <button plain="true" size="mini" id="up-btn">
+          <form bindsubmit="formSubmit" bindreset="formReset">
+            <input name="id" class="dream-id-input" type="hidden" value="{{item.id}}"/>
+            <view class="up-area">
+                <button form-type="submit" class="up-btn" name="{{item.id}}">
                     <image class="up-image" src="../../images/up_button.png" background-size="cover"></image>
                 </button>
-           </view>
+            </view>
+          </form>
+
       </view>
 
     </block>
