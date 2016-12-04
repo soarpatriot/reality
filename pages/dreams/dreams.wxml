@@ -19,19 +19,27 @@
 
             </view>
           </view>
-          <form bindsubmit="formSubmit" bindreset="formReset">
-            <input name="id" class="dream-id-input" type="hidden" value="{{item.id}}"/>
-            <view class="up-area">
-                <button form-type="submit" class="up-btn" name="{{item.id}}">
-                    <image animation="{{animationData}}" 
-                    name="image" 
+          <view class="up-area">
+                <image animation="{{animationData}}" 
+                    data-dream-id="{{item.id}}"
+                   
                     bindtap="up"
                     class="up-image" 
                     src="../../images/up_button.png"
                      background-size="cover"></image>
+           </view>   
+               <!--         
+          <form bindsubmit="formSubmit" bindreset="formReset">
+            <input name="id" class="dream-id-input" type="hidden" value="{{item.id}}"/>
+            
+            
+                                <button form-type="submit" bindtap="up" class="up-btn" name="{{item.id}}">
+
                 </button>
-            </view>
-          </form>
+                </form>
+                -->
+           
+          
 
       </view>
 

@@ -55,7 +55,10 @@ Page({
     this.animation = animation
   },
   up: function( e ){
-     console.log(e.src)
+      //event.target.dataset.id 
+     console.log("up:::")
+     console.log(JSON.stringify(e))
+     console.log(e.target.dataset.dreamId)
   },
   refresh: function() {
     // 下拉刷新，重新加载数据； 

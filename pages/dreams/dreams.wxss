@@ -38,10 +38,12 @@
 }
 
 .up-image{
+   padding: 10rpx 20rpx;
    width: 40rpx;
    height: 40rpx; 
 }
 .up-btn{
+    display: block;
     line-height: 1;
     padding-left: 0;
     padding-right: 0;
@@ -54,8 +56,9 @@
 
 .up-area{
     width: 100%;
+    
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-end;
     
 }
