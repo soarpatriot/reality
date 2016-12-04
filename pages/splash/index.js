@@ -34,7 +34,7 @@ var page = {
         
         setTimeout(function(){
         	wx.navigateTo({
-	            url: '../index/index'
+	            url: '../dreams/dreams'
 	        })
         },3000)
         
