@@ -22,10 +22,10 @@
           <view class="up-area">
                 <image animation="{{animationData}}" 
                     data-dream-id="{{item.id}}"
-                   
+                    data-index="{{index}}"
                     bindtap="up"
                     class="up-image" 
-                    src="../../images/up_button.png"
+                    src="{{item.up_src}}"
                      background-size="cover"></image>
            </view>   
                <!--         

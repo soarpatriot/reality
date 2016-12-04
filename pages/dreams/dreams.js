@@ -25,7 +25,12 @@ Page({
         //获取到了数据
         console.log("success")
         var dreams = res.data.data;
-        console.log( dreams );
+        //console.log( dreams );
+        var len = dreams.length;
+        var i = 0
+        for(i = 0; i< len; i++ ){
+          dreams[i].up_src = "../../images/up_button.png"
+        }
         that.setData( {
           dreams: dreams,
           loading: true
@@ -56,6 +61,14 @@ Page({
   },
   up: function( e ){
       //event.target.dataset.id 
+     var index = e.target.dataset.index
+     var dreams = this.data.dreams
+     dreams[index].up_src = "../../images/up_button_blue.png"
+     this.setData( {
+          dreams: dreams
+          
+     })
+     console.log("dreams:::"+JSON.stringify(dreams) )
      console.log("up:::")
      console.log(JSON.stringify(e))
      console.log(e.target.dataset.dreamId)
