@@ -38,7 +38,7 @@
 }
 
 .up-image{
-   padding: 10rpx 20rpx;
+   padding: 0 20rpx;
    width: 40rpx;
    height: 40rpx; 
 }
@@ -56,11 +56,11 @@
 
 .up-area{
     width: 100%;
-    
+    padding: 10rpx 0;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    
+    align-items: baseline;
 }
 
 button::after{
@@ -69,4 +69,9 @@ button::after{
 
 .dream-id-input{
     display: none;
+}
+.favorite{
+    margin-right: 20rpx;
+    display: block;
+    font-size: 12px;
 }

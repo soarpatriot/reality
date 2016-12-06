@@ -27,6 +27,7 @@
                     class="up-image" 
                     src="{{item.up_src}}"
                      background-size="cover"></image>
+                <text class="favorite">{{item.count}}</text>  
            </view>   
                <!--         
           <form bindsubmit="formSubmit" bindreset="formReset">
