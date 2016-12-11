@@ -1,3 +1,5 @@
+var app = getApp()
+
 Page({
   data: {
     loading: false,
@@ -29,7 +31,7 @@ Page({
         var len = dreams.length;
         var i = 0
         for(i = 0; i< len; i++ ){
-          dreams[i].up_src = "../../images/up_button.png"
+          dreams[i].up_src = "up_button"
         }
         that.setData( {
           dreams: dreams,
@@ -61,17 +63,51 @@ Page({
   },
   up: function( e ){
       //event.target.dataset.id 
-     var index = e.target.dataset.index
-     var dreams = this.data.dreams
-     dreams[index].up_src = "../../images/up_button_blue.png"
-     this.setData( {
+    var that = this
+    var index = e.target.dataset.index
+    var postId = e.target.dataset.postId
+    var dreams = this.data.dreams
+    if(dreams[index].up_src === "up_button_blue"){
+      dreams[index].up_src = "up_button"
+    }else{
+      dreams[index].up_src = "up_button_blue"
+    }
+     
+    this.setData( {
+      dreams: dreams
+    })
+    var user =  wx.getStorageSync('user')
+    console.log("user_id: " + user.id)
+    console.log("user_id2: " + app.globalData.userInfo.id)
+    var fav = {
+      favorite: {
+        user_id: app.globalData.userInfo.id,
+        post_id: postId
+      }
+    }
+    //网络请求
+    wx.request( {
+      url: 'https://api.dreamreality.cn/favorites/up',
+      header: {
+        "Content-Type": "application/json"
+      },
+      method: "POST",
+      data: JSON.stringify(fav),
+      success: function( res ) {
+        //获取到了数据
+        console.log("success")
+        var favorite = res.data.data;
+        dreams[index].count = favorite.count
+        that.setData( {
           dreams: dreams
-          
-     })
-     console.log("dreams:::"+JSON.stringify(dreams) )
-     console.log("up:::")
-     console.log(JSON.stringify(e))
-     console.log(e.target.dataset.dreamId)
+        })
+        
+      },
+      fail: function(error){
+          console.log(error)
+      }
+    });
+
   },
   refresh: function() {
     // 下拉刷新，重新加载数据； 

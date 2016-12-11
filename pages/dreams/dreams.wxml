@@ -4,7 +4,7 @@
 </loading>
  <scroll-view style="height: {{windowHeight}}px; width: {{windowWidth}}px; " scroll-y="true" bindscrolltoupper="refresh"> 
 
-    <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="dr">
+    <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="{{index}}">
       <view id="{{index}}" class="one-dream">
           <view class="content-area">
             <view class="avatar-view">
@@ -21,11 +21,11 @@
           </view>
           <view class="up-area">
                 <image animation="{{animationData}}" 
-                    data-dream-id="{{item.id}}"
+                    data-post-id="{{item.id}}"
                     data-index="{{index}}"
                     bindtap="up"
                     class="up-image" 
-                    src="{{item.up_src}}"
+                    src="../../images/{{item.up_src}}.png"
                      background-size="cover"></image>
                 <text class="favorite">{{item.count}}</text>  
            </view>   
