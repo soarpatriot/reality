@@ -22,16 +22,21 @@ Page({
         "Content-Type": "application/json"
       },
       method: "GET",
-      
+      data: {user_id: app.globalData.userInfo.id},
       success: function( res ) {
         //获取到了数据
         console.log("success")
         var dreams = res.data.data;
-        //console.log( dreams );
+        console.log( dreams );
         var len = dreams.length;
         var i = 0
         for(i = 0; i< len; i++ ){
-          dreams[i].up_src = "up_button"
+          if(dreams[i].favorited === true){
+            dreams[i].up_src = "up_button_blue"
+          }else{
+            dreams[i].up_src = "up_button"
+          }
+          
         }
         that.setData( {
           dreams: dreams,
