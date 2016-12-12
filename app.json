@@ -15,19 +15,26 @@
   },
   "tabBar": {
    
-    "selectedColor": "#3cc51f",
-    "borderStyle": "black",
+    "selectedColor": "#4DBBFF",
+    "borderStyle": "white",
+    "backgroundColor": "#f6f6f6",
    
     "list": [{
       "pagePath": "pages/dreams/dreams",
+      "iconPath": "images/cloud-black.png",
+      "selectedIconPath": "images/cloud-blue.png",
       "text": "梦想"
     }, 
     {
       "pagePath": "pages/posts/posts",
+      "iconPath": "images/edit-black.png",
+      "selectedIconPath": "images/edit-blue.png",
       "text": "创建梦想"
     },
     {
       "pagePath": "pages/index/index",
+      "iconPath": "images/user-black.png",
+      "selectedIconPath": "images/user-blue.png",
       "text": "我的"
     }]
   },
