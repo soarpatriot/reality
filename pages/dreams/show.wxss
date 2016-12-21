@@ -9,12 +9,22 @@
     display: flex;
     padding-top: 20rpx;
 }
-
+.dream-label{
+    color: #4DBBFF;
+}
+.complete-lable{
+    color: lawngreen;
+}
+.dream-text{
+    padding: 20rpx;
+    font-size: 12px;
+}
 .one-dream-content{
     padding-left: 10px;
     display: flex;
     flex-direction: column;
 }
 .dream-item{
+    
     margin-bottom: 20rpx;
 }

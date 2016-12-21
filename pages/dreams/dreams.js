@@ -71,7 +71,7 @@ Page({
     var that = this
     var index = e.target.dataset.index
     var postId = e.target.dataset.postId
-    var dreams = this.data.dreams
+    var dreams = that.data.dreams
     if(dreams[index].up_src === "up_button_blue"){
       dreams[index].up_src = "up_button"
     }else{

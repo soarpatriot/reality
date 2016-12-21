@@ -75,9 +75,17 @@ var page = {
             })
         }.bind(this), 1000)
         
+        console.log("show")
         setTimeout(function(){
-        	wx.navigateTo({
-	            url: '../dreams/dreams'
+            console.log("show  30000")
+        	wx.switchTab({
+	            url: '../dreams/dreams',
+                success: function(){
+                    console.log('success');
+                },
+                fail: function(data){
+                    console.log('fail:'+JSON.stringify(data));
+                }
 	        })
         },3000)
         

@@ -7,10 +7,24 @@
           </view>
           <view class="one-dream-content">
             <view class="dream-item">{{dream.nickname}}</view>
-            <view class="dream-item">梦想： {{dream.dream}}</view>
-            <view class="dream-item">现实： {{dream.reality}}</view>
-            <view class="dream-item">完成： 
+            <view class="dream-item">
+              <view class="dream-label">
+               梦想：
+              </view>
+              <view class="dream-text">
+                  {{dream.dream}}
+              </view>
+            </view>
+            <view class="dream-item">现实： 
+              <view class="dream-text">
+                  {{dream.reality}}
+              </view>
+            </view>
+            <view class="dream-item">
+              <view class="complete-lable">完成： 
+              </view>
               <progress percent="{{dream.progress}}" show-info />
+
             </view>
           </view>
       </view>
