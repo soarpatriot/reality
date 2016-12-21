@@ -3,11 +3,11 @@
     <form bindsubmit="formSubmit" bindreset="formReset">
         <view class="section">
             <view class="section__title">梦想：</view>
-            <textarea name="dream" auto-height auto-focus maxlength="250" placeholder="我的梦想" />
+            <textarea name="dream" class="write-area" auto-height auto-focus maxlength="250" placeholder="我的梦想" />
         </view>
         <view class="section">
             <view class="section__title">现实：</view>
-            <textarea name="reality" auto-height maxlength="250" placeholder="可爱的现实" />
+            <textarea name="reality" class="write-area" auto-height maxlength="250" placeholder="可爱的现实" />
             
         </view>
 

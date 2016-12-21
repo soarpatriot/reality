@@ -18,6 +18,7 @@
 .dream-text{
     padding: 20rpx;
     font-size: 12px;
+    color: #666;
 }
 .one-dream-content{
     padding-left: 10px;

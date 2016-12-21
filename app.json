@@ -5,6 +5,7 @@
     "pages/dreams/dreams",
     "pages/dreams/show",
     "pages/posts/posts",
+    "pages/my/index",
     "pages/logs/logs"
   ],
   "window":{
@@ -32,7 +33,7 @@
       "text": "创建梦想"
     },
     {
-      "pagePath": "pages/index/index",
+      "pagePath": "pages/my/index",
       "iconPath": "images/user-black.png",
       "selectedIconPath": "images/user-blue.png",
       "text": "我的"

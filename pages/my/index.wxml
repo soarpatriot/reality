@@ -1,0 +1,8 @@
+<view class="container main-container">
+  
+  <view class="feature">
+      <view class="dreams">
+         我的梦想
+      </view>
+  </view>
+</view>

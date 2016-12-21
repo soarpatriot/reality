@@ -7,3 +7,7 @@
     width: 50%;
     font-size: 14px;
 }
+.write-area{
+    padding: 20rpx;
+    font-size: 12px;
+}
