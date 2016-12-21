@@ -1,8 +1,23 @@
 <view class="container main-container">
   
   <view class="feature">
+      <view class="me">
+        <image class="avatar" mode="scaleToFill" 
+          src="{{user.avatar_url}}">
+        </image>
+        <text class="nickname">
+          {{user.nickname}}
+        </text>
+
+      </view>
       <view class="dreams">
-         我的梦想
+        <image class="dreams-icon" mode="scaleToFill" 
+          src="../../images/cloud-blue.png">
+        </image>
+        <view class="nickname">
+          我的梦想
+        </view>
+         
       </view>
   </view>
 </view>
