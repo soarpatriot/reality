@@ -1,4 +1,4 @@
-<view class="container main-container">
+<view class="container my">
   
   <view class="feature">
       <view class="me">
@@ -10,14 +10,22 @@
         </text>
 
       </view>
+      <navigator class="dream" url="dream"   hover-class="navigator-hover">
       <view class="dreams">
+        
         <image class="dreams-icon" mode="scaleToFill" 
           src="../../images/cloud-blue.png">
         </image>
-        <view class="nickname">
-          我的梦想
+        <view class="dream-label">
+          
+           
+              
+               我的梦想
+          
         </view>
          
       </view>
+      </navigator>
+
   </view>
 </view>

@@ -1,0 +1,27 @@
+/* pages/posts/edit.wxss */
+.dream-id-section{
+    display: none;
+}
+.section {
+    margin-bottom:20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+}
+
+.publish-btn{
+    width: 50%;
+    font-size: 14px;
+}
+.write-area{
+    padding: 20rpx;
+    font-size: 12px;
+}
+
+
+.dream-form{
+    width: 100%;
+   
+}

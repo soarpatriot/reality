@@ -1,19 +1,39 @@
 /* pages/my/index.wxss */
+
+.my{
+    background-color: #eeeeee;
+    height: 100%;
+}
+
+.feature{
+    width: 100%;
+}
+
 .me{
-    margin: 20rpx 0;
+    margin: 40rpx 0;
+    padding: 20px;
     display: flex;
-    border:  solid 2px #eeeee;
+    width: 100%;
+    background: #ffffff;
+    flex-direction: row;
 }
 .avatar{
   width: 44px;
   height: 44px;
 }
 .nickname{
-    padding: 0 20rpx;
+    padding: 0 40rpx;
 }
-
+.dream-label{
+    padding: 0 40rpx;
+}
 .dreams{
     display: flex;
+    align-items: center;
+
+    padding: 40rpx;
+    background-color: #ffffff;
+    margin-bottom: 40rpx;
 }
 
 .dreams-icon{

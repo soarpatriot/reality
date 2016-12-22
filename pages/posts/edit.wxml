@@ -1,0 +1,35 @@
+<!--index.wxml-->
+<view class="container main-container">
+    <form bindsubmit="formSubmit" class="dream-form" bindreset="formReset">
+        <view class="dream-id-section">
+            <input name="id" value="{{dream.id}}"/>
+        </view>
+        <view class="section">
+            <view class="section__title">梦想：</view>
+            <text class="write-area" >
+             {{dream.dream}}
+            </text>
+            
+        </view>
+        <view class="section">
+            <view class="section__title">现实：</view>
+            <text name="reality" class="write-area" >
+              {{dream.reality}}
+            </text>
+            
+        </view>
+
+        <view class="section">
+            <view class="section__title">完成(可以更改)</view>
+            <slider name="progress" value="{{dream.progress}}" show-value ></slider>
+            
+        </view>
+
+        <view class="section">
+            <button class="publish-btn" formType="submit" type="primary">
+               更新进度
+            </button>
+            
+        </view>
+    </form>
+</view>

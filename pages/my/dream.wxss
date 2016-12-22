@@ -1,0 +1,77 @@
+.dream-list{
+
+    
+}
+
+.avatar{
+  width: 44px;
+  height: 44px;
+}
+
+.one-dream{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom:  solid 2rpx #eee;
+}
+.content-area{
+    width: 100%;
+    display: flex;
+    padding: 20rpx 30rpx;
+    
+}
+.nickname{
+    font-size: 14px;
+    color: #333;
+}
+.dream{
+    padding: 20rpx 0;
+}
+.one-dream-content{
+    
+    color: #666;
+    font-size: 12px;
+    padding: 0 30rpx;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.up-image{
+   padding: 0 20rpx;
+   width: 40rpx;
+   height: 40rpx; 
+}
+.up-btn{
+    display: block;
+    line-height: 1;
+    padding-left: 0;
+    padding-right: 0;
+    border: 0 solid #eee;
+    margin-right: 20rpx;
+    background-color: #fff;
+    left: 0;
+    top: 0;
+}
+
+.up-area{
+    width: 100%;
+    padding: 10rpx 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: baseline;
+}
+
+button::after{
+    border: 0 solid #fff;
+}
+
+.dream-id-input{
+    display: none;
+}
+.favorite{
+    margin-right: 20rpx;
+    display: block;
+    font-size: 12px;
+}

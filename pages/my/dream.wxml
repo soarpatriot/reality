@@ -1,0 +1,55 @@
+
+<loading hidden="{{loading}}">
+  加载中...
+</loading>
+ <scroll-view style="height: {{windowHeight}}px; width: {{windowWidth}}px; " scroll-y="true" bindscrolltoupper="refresh"> 
+
+    <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="{{index}}">
+      <view id="{{index}}" class="one-dream">
+          <view class="content-area">
+            <view class="avatar-view">
+                <image class="avatar" mode="scaleToFill" src="{{item.avatar_url}}"></image>
+
+            </view>
+            <view class="one-dream-content">
+                <text class="nickname">{{item.nickname}}</text>
+                <navigator class="dream" url="show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
+                <text class="nickname">{{item.created_at}}</text>
+
+
+            </view>
+          </view>
+          <view class="up-area">
+
+                  
+          </view>
+          <view class="up-area">
+                <image animation="{{animationData}}" 
+                    data-post-id="{{item.id}}"
+                    data-index="{{index}}"
+                    bindtap="delete"
+                    class="up-image" 
+                    src="../../images/delete.png"
+                     background-size="cover"></image>
+                <image animation="{{animationData}}" 
+                    data-post-id="{{item.id}}"
+                    data-index="{{index}}"
+                    bindtap="edit"
+                    class="up-image" 
+                    src="../../images/edit-black.png"
+                     background-size="cover"></image>
+                <image animation="{{animationData}}" 
+                    data-post-id="{{item.id}}"
+                    data-index="{{index}}"
+                    bindtap="up"
+                    class="up-image" 
+                    src="../../images/{{item.up_src}}.png"
+                     background-size="cover"></image>
+                <text class="favorite">{{item.count}}</text>  
+           </view>   
+
+      </view>
+
+    </block>
+  </scroll-view>
+

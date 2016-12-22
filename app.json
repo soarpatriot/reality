@@ -5,7 +5,9 @@
     "pages/dreams/dreams",
     "pages/dreams/show",
     "pages/posts/posts",
+    "pages/posts/edit",
     "pages/my/index",
+    "pages/my/dream",
     "pages/logs/logs"
   ],
   "window":{
