@@ -1,11 +1,12 @@
 <view class="container main-container">
-  
-  <view class="dream-list">
+
       <view class="one-dream">
-          <view>
-              <image class="avatar" mode="aspectFit" src="{{dream.avatar_url}}"></image>
+          <view class="avatar-view">
+              <image class="avatar" mode="aspectFit" 
+                   src="{{dream.avatar_url}}">
+              </image>
           </view>
-          <view class="one-dream-content">
+          <view class="dream-content">
             <view class="dream-item">{{dream.nickname}}</view>
             <view class="dream-item">
               <view class="dream-label">
@@ -28,5 +29,5 @@
             </view>
           </view>
       </view>
-  </view>
+  
 </view>
