@@ -144,7 +144,7 @@ Page({
     //})
     this.setData({up: "up_button_blue.png"})
     console.log("id info ......." + id)
-    console.log("img info ......." + img)
+    //console.log("img info ......." + img)
     
   }
 })

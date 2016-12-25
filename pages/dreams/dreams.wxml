@@ -12,23 +12,35 @@
 
             </view>
             <view class="one-dream-content">
-                <text class="nickname">{{item.nickname}}</text>
-                <navigator class="dream" url="show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
-                <text class="nickname">{{item.created_at}}</text>
+                <view class="nickname">
+                   {{item.nickname}}
+                </view>
+                <view class="nav-view">
+                    <navigator class="dream" url="show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
+                </view>
 
-
+                
+                <view class="up-area">
+                    <view class="ago">
+                      {{item.published_at}}
+                    </view>
+                    <view class="thumb-up">
+                      <image animation="{{animationData}}" 
+                        data-post-id="{{item.id}}"
+                        data-index="{{index}}"
+                        bindtap="up"
+                        class="up-image" 
+                        src="../../images/{{item.up_src}}.png"
+                        background-size="cover"></image>
+                      <text class="favorite">{{item.count}}</text>
+                    </view>
+  
+                </view> 
+            
             </view>
+
           </view>
-          <view class="up-area">
-                <image animation="{{animationData}}" 
-                    data-post-id="{{item.id}}"
-                    data-index="{{index}}"
-                    bindtap="up"
-                    class="up-image" 
-                    src="../../images/{{item.up_src}}.png"
-                     background-size="cover"></image>
-                <text class="favorite">{{item.count}}</text>  
-           </view>   
+            
                <!--         
           <form bindsubmit="formSubmit" bindreset="formReset">
             <input name="id" class="dream-id-input" type="hidden" value="{{item.id}}"/>
