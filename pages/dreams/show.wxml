@@ -29,5 +29,31 @@
             </view>
           </view>
       </view>
-  
+
 </view>
+
+<form  bindsubmit="formSubmit" bindreset="formReset">
+    <view class="hidden">
+      <input name="postId" value="{{dream.id}}"/>
+    
+    </view>
+    <view class="say">
+      
+        <view class="writing">
+             <textarea value="{{content}}" name="content" class="write-area" auto-height               maxlength="250" placeholder="鼓励他，吐槽他" />
+               
+             
+        </view>
+        <view class="send-area">
+            <button formType="submit" class="btn-send">
+                <image 
+                
+                class="send-image" 
+                src="../../images/paper.png"
+                background-size="cover"></image>
+            </button>
+
+        </view>
+    </view>
+</form>
+

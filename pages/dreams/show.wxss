@@ -34,3 +34,46 @@
     
     margin-bottom: 20rpx;
 }
+
+.say{
+    display: flex;
+    width: 100%;
+    border-top:   solid 2rpx  #4DBBFF;
+    z-index: 10;
+    position: fixed;
+    bottom: 0;
+    align-items: center;
+    
+}
+
+.writing{
+    flex: 1;
+    position: relative;
+}
+.write-area{
+    padding: 40rpx 40rpx;
+    width: 100%;
+}
+.send-image{
+    padding: 30rpx 0;
+    width: 64rpx;
+    height: 64rpx;
+}
+.btn-send{
+    display: flex;
+    align-items: center;
+    border-radius: 0;
+    background-color: transparent;
+}
+button::after{
+    border: 1px solid #fff;
+}
+.send-area{
+    flex: none;
+    margin-left: 60rpx;
+    position: relative;
+}
+
+.hidden{
+    display: none;
+}

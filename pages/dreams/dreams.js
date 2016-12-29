@@ -14,41 +14,45 @@ Page({
   onLoad: function() {
     console.log( 'onLoad' )
     var that = this
+    
+    app.getUserInfo(function(userInfo){
 
-    //网络请求
-    wx.request( {
-      url: 'https://api.dreamreality.cn/posts',
-      header: {
-        "Content-Type": "application/json"
-      },
-      method: "GET",
-      data: {user_id: app.globalData.userInfo.id},
-      success: function( res ) {
-        //获取到了数据
-        console.log("success")
-        var dreams = res.data.data;
-        console.log( dreams );
-        var len = dreams.length;
-        var i = 0
-        for(i = 0; i< len; i++ ){
-          if(dreams[i].favorited === true){
-            dreams[i].up_src = "up_button_blue"
-          }else{
-            dreams[i].up_src = "up_button"
+        //网络请求
+        wx.request( {
+          url: 'https://api.dreamreality.cn/posts',
+          header: {
+            "Content-Type": "application/json"
+          },
+          method: "GET",
+          data: {user_id: userInfo.id},
+          success: function( res ) {
+            //获取到了数据
+            console.log("success")
+            var dreams = res.data.data;
+            console.log( dreams );
+            var len = dreams.length;
+            var i = 0
+            for(i = 0; i< len; i++ ){
+              if(dreams[i].favorited === true){
+                dreams[i].up_src = "up_button_blue"
+              }else{
+                dreams[i].up_src = "up_button"
+              }
+              
+            }
+            that.setData( {
+              dreams: dreams,
+              loading: true
+            })
+            
+            //that.update()
+          },
+          fail: function(error){
+              console.log(error)
           }
-          
-        }
-        that.setData( {
-          dreams: dreams,
-          loading: true
-        })
-        
-        //that.update()
-      },
-      fail: function(error){
-          console.log(error)
-      }
-    });
+        });
+    })
+    
   },
   onShow: function(e) {
     wx.getSystemInfo({

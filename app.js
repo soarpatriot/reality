@@ -5,11 +5,13 @@ App({
     //var logs = wx.getStorageSync('logs') || []
     //logs.unshift(Date.now())
     //wx.setStorageSync('logs', logs)
-    //this.getUserInfo(function(userInfo){
-    //  wx.setStorageSync('user', userInfo)
-    //  console.log("res" + userInfo)
-    //});
+    this.getUserInfo(function(userInfo){
+      wx.setStorageSync('user', userInfo)
+      console.log("res" + userInfo)
+    });
   },
+
+
   getUserInfo:function(cb){
     var that = this
     console.log("d:"  +  this.globalData.userInfo)
@@ -61,3 +63,34 @@ App({
     userInfo:null
   }
 })
+
+
+/**
+ *   data: {
+    hasUserInfo: false
+  },
+  getUserInfo: function () {
+    var that = this
+
+    if (app.globalData.hasLogin === false) {
+      wx.login({
+        success: _getUserInfo
+      })
+    } else {
+      _getUserInfo()
+    }
+
+    function _getUserInfo(res) {
+      wx.getUserInfo({
+        success: function (res) {
+          that.setData({
+            hasUserInfo: true,
+            userInfo: res.userInfo
+          })
+          that.update()
+        }
+      })
+    }
+  },
+
+ */
