@@ -3,7 +3,7 @@ var app = getApp()
 
 Page({
   data:{
-    userId: 121,
+    
     content:'',
     dream: {}
   },
@@ -102,7 +102,7 @@ Page({
       success: function( res ) {
         //获取到了数据
         console.log("success")
-        var dream = res.data.data;
+        var dream = res.data;
         console.log( dream );
         that.setData( {
           dream: dream

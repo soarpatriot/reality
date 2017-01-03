@@ -43,7 +43,7 @@
     position: fixed;
     bottom: 0;
     align-items: center;
-    
+    background-color: #fff;
 }
 
 .writing{
@@ -76,4 +76,36 @@ button::after{
 
 .hidden{
     display: none;
+}
+
+.small-avatar{
+  width: 32px;
+  height: 32px;
+}
+.comments{
+   margin-bottom: 100rpx;
+   margin-top: 40rpx;
+   font-size: 12px;
+   width: 100%;
+}
+.comment{
+   padding: 20rpx 0;
+   display: flex;
+   width: 100%;
+   flex-direction: row;
+}
+
+.comment-content{
+    flex: 1;
+    padding: 0 0 20rpx 30rpx;
+    border-bottom:  solid 2rpx #eee;
+}
+
+.comment-nickname{
+    color: #666;
+}
+.content{
+    margin-top: 20rpx;
+    color: #888;
+    
 }
