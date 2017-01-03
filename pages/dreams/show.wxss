@@ -23,7 +23,7 @@
 }
 .dream-text{
     padding: 20rpx;
-    font-size: 12px;
+    font-size: 14px;
     color: #666;
 }
 .dream-content{
@@ -36,6 +36,7 @@
 }
 
 .say{
+    font-size: 14px;
     display: flex;
     width: 100%;
     border-top:   solid 2rpx  #4DBBFF;
@@ -105,7 +106,13 @@ button::after{
     color: #666;
 }
 .content{
+    font-size: 14px;
     margin-top: 20rpx;
+    color: #333;
+}
+
+.comment-time{
+    margin-top: 20rpx;
+    font-size: 12px;
     color: #888;
-    
 }

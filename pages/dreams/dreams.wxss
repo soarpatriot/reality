@@ -28,7 +28,7 @@
 .one-dream-content{
     flex: 1;
     color: #666;
-    font-size: 12px;
+    font-size: 14px;
     padding-left: 30rpx;
     display: flex;
     flex-direction: column;
