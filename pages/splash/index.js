@@ -1,9 +1,11 @@
+
+var utils = require('../../utils/util.js')
 var app = getApp()
 var page = {
 
     data: {
         // text:"这是一个页面"
-        slogan: '梦想再大也不算大，再小也不嫌小',
+        slogan: utils.randowSlogn(),
         animationData: {}
     },
     onLoad: function () {
@@ -54,6 +56,7 @@ var page = {
     onShow: function () {
 
         // 页面显示的时候的动画
+        /**
         var animation = wx.createAnimation({
             duration: 1000,
             timingFunction: 'ease-in-out',
@@ -73,7 +76,7 @@ var page = {
             this.setData({
                 animationData: animation.export(),
             })
-        }.bind(this), 1000)
+        }.bind(this), 1000)**/
         
         console.log("show")
         setTimeout(function(){
@@ -87,7 +90,7 @@ var page = {
                     console.log('fail:'+JSON.stringify(data));
                 }
 	        })
-        },3000)
+        },2000000)
         
 
     }

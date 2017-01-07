@@ -7,5 +7,11 @@ bindtap="skipToMain" animation="{{animationData}}">
     <view class="slogan">
         <text>{{slogan}}</text>
     </view>
+    
   </view>
+<view class="footer">
+      Designed by all the loved in the world.
 </view>
+
+</view>
+
