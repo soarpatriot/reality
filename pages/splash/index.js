@@ -19,40 +19,41 @@ var page = {
         //console.log(userInfo)
 
 
-        var user = {
-            nickname: userInfo.nickName,
-            gender: userInfo.gender,
-            city: userInfo.city,
-            province: userInfo.province,
-            country: userInfo.country,
-            openid: app.globalData.sessionInfo.openid,
-            avatar_url: userInfo.avatarUrl
-        }
-    
-        console.log(user)
-        var userJson = JSON.stringify(user);
-        console.log(userJson)
-        //网络请求
-        wx.request( {
-            url: 'https://api.dreamreality.cn/users/me',
-            header: {
-            "Content-Type": "application/json"
-            },
-            method: "POST",
-            data: userJson,
-            success: function( res ) {
-            console.log("data:" + JSON.stringify(res.data.data))
-            that.setData({
-                userInfo:res.data.data
-            })
-            app.globalData.userInfo = res.data.data
-            },
-            fail: function(error){
-                console.log(error)
+            var user = {
+                nickname: userInfo.nickName,
+                gender: userInfo.gender,
+                city: userInfo.city,
+                province: userInfo.province,
+                country: userInfo.country,
+                openid: userInfo.openid,
+                avatar_url: userInfo.avatarUrl
             }
-        });
-      })
+        
+            console.log(user)
+            var userJson = JSON.stringify(user);
+            console.log(userJson)
+            //网络请求
+            wx.request( {
+                url: 'https://api.dreamreality.cn/users/me',
+                header: {
+                "Content-Type": "application/json"
+                },
+                method: "POST",
+                data: userJson,
+                success: function( res ) {
+                console.log("data:" + JSON.stringify(res.data.data))
+                that.setData({
+                    userInfo:res.data.data
+                })
+                app.globalData.userInfo = res.data.data
+                },
+                fail: function(error){
+                    console.log(error)
+                }
+            })
+        })
     },
+    
     onShow: function () {
 
         // 页面显示的时候的动画
@@ -90,8 +91,6 @@ var page = {
 	        })
         },5000)
         
-
-
     }
 
 }

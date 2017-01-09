@@ -63,7 +63,7 @@
     <view class="say">
       
         <view class="writing">
-             <textarea value="{{content}}" name="content" class="write-area" auto-height               maxlength="250" placeholder="鼓励他，吐槽他" />
+             <textarea value="{{content}}"  name="content" class="write-area" fixed="true"    auto-height maxlength="240" placeholder="鼓励他，吐槽他" />
                
              
         </view>

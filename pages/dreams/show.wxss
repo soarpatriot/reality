@@ -54,6 +54,7 @@
 .write-area{
     padding: 40rpx 40rpx;
     width: 100%;
+    position: relative;
 }
 .send-image{
     padding: 30rpx 0;
