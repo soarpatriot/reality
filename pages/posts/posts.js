@@ -47,9 +47,19 @@ Page({
             icon: 'success',
             duration: 2000
           })
-          wx.navigateTo({
-            url: '../dreams/dreams'
-          })
+          setTimeout(function(){
+
+              wx.switchTab({
+                  url: '../dreams/dreams',
+                    success: function(){
+                        console.log('success');
+                    },
+                    fail: function(data){
+                        console.log('fail:'+JSON.stringify(data));
+                    }
+              })
+          },2000)
+          
         },
         fail: function(error){
             console.log(error)

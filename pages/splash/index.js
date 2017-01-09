@@ -53,7 +53,7 @@ var page = {
             })
         })
     },
-    
+
     onShow: function () {
 
         // 页面显示的时候的动画
@@ -89,7 +89,7 @@ var page = {
                     console.log('fail:'+JSON.stringify(data));
                 }
 	        })
-        },5000)
+        },3000)
         
     }
 
