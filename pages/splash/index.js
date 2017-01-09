@@ -56,13 +56,11 @@ var page = {
     onShow: function () {
 
         // 页面显示的时候的动画
-        /**
         var animation = wx.createAnimation({
             duration: 1000,
             timingFunction: 'ease-in-out',
             transformOrigin: "50% 50%",
         })
-
         this.animation = animation
 
         animation.scale(1).opacity(0).step()
@@ -76,7 +74,7 @@ var page = {
             this.setData({
                 animationData: animation.export(),
             })
-        }.bind(this), 1000)**/
+        }.bind(this), 1000)
         
         console.log("show")
         setTimeout(function(){
@@ -90,8 +88,9 @@ var page = {
                     console.log('fail:'+JSON.stringify(data));
                 }
 	        })
-        },2000000)
+        },5000)
         
+
 
     }
 
