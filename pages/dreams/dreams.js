@@ -2,6 +2,10 @@ var app = getApp()
 
 Page({
   data: {
+    pagination: {
+       
+    },
+    scrollTop : 0,
     loading: false,
     windowHeight: 0,
     windowWidth: 0,
@@ -11,15 +15,32 @@ Page({
   },
 
   //view加载
-  onLoad: function() {
+  onLoad: function(options) {
+    wx.getSystemInfo({
+      success: (res) => {
+        this.setData({
+          windowHeight: res.windowHeight,
+          windowWidth: res.windowWidth
+        })
+      }
+    })
     console.log( 'onLoad' )
+    this.fetch("refresh")
+  },
+  fetch: function(direction){
     var that = this
-    
+    console.log("direction: " + direction)
     app.getUserInfo(function(userInfo){
-
+        var page = that.data.pagination.page_number || 1
+        if(direction === "more"){
+           page = page +1
+        }else{
+           page = 1
+        }
+        console.log("page: " + page)
         //网络请求
         wx.request( {
-          url: 'https://api.dreamreality.cn/posts',
+          url: 'https://api.dreamreality.cn/posts?page_size=10&page='+ page,
           header: {
             "Content-Type": "application/json"
           },
@@ -28,6 +49,7 @@ Page({
           success: function( res ) {
             //获取到了数据
             console.log("success")
+            var pagination = res.data.pagination
             var dreams = res.data.data;
             console.log( dreams );
             var len = dreams.length;
@@ -40,8 +62,23 @@ Page({
               }
               
             }
+            if(direction === "more" && dreams.length > 0){
+              dreams = that.data.dreams.concat(dreams)
+            }
+            if( dreams.length > 0){
+              that.setData( {
+                dreams: dreams,
+                loading: true
+              })
+
+            }else{
+              wx.showToast({
+                title: '无更多数据',
+                duration: 2000
+              })
+            }
             that.setData( {
-              dreams: dreams,
+              pagination: pagination,
               loading: true
             })
             
@@ -55,14 +92,7 @@ Page({
     
   },
   onShow: function(e) {
-    wx.getSystemInfo({
-      success: (res) => {
-        this.setData({
-          windowHeight: res.windowHeight,
-          windowWidth: res.windowWidth
-        })
-      }
-    })
+
     var animation = wx.createAnimation({
       duration: 1000,
         timingFunction: 'ease',
@@ -123,20 +153,32 @@ Page({
     // TODO，不重新加载，只更新对应列表；
     console.log("pull");
     this.setData( {
-          loading: false
+          loading: false,
+          scrollTop : 0
     })
+
+    this.fetch("refresh")
+    //wx.stopPullDownRefresh();
     
-    this.onLoad()
+    //this.onLoad({direction: "refresh"})
   },
-  onPullDownRefresh: function() {
+  loadMore: function() {
     // Do something when pull down.
      console.log('刷新')
      this.setData( {
           loading: false
     })
-    this.onLoad()
-    wx.stopPullDownRefresh();
- },
+    this.fetch("more")
+
+    // this.onLoad({direction: "more"})
+    // wx.stopPullDownRefresh();
+   },
+   scroll:function(event){
+    //   该方法绑定了页面滚动时的事件，我这里记录了当前的position.y的值,为了请求数据之后把页面定位到这里来。
+     this.setData({
+         scrollTop : event.detail.scrollTop
+     });
+  },
   formSubmit: function(e) {
     var d = e.detail.value
     var id = d.id 
