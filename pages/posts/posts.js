@@ -1,7 +1,11 @@
 // pages/posts/posts.js
 var app = getApp()
 Page({
-  data:{},
+  data:{
+    dream: "",
+    reality: "",
+    progress: 0
+  },
 
   formSubmit: function(e) {
     var d = e.detail.value
@@ -20,18 +24,18 @@ Page({
         progress: d.progress,
         user_id: app.globalData.userInfo.id
       }
+      
       var dreamStr = JSON.stringify(dream)
       this.post(dreamStr)
 
     }
-    console.log("user info .......")
-    //console.log(app.globalData.userInfo)
-    //console.log('form发生了submit事件，携带数据为：', e.detail.value)
+   
   },
   formReset: function() {
     console.log('form发生了reset事件')
   },
   post: function(dreamStr){
+    var that = this
       //网络请求
       wx.request( {
         url: 'https://api.dreamreality.cn/posts',
@@ -41,9 +45,14 @@ Page({
         method: "POST",
         data: dreamStr,
         success: function( res ) {
-          console.log("data:" + JSON.stringify(res.data.data))
+          // console.log("data:" + JSON.stringify(res.data.data))
+          that.setData({
+            dream: "",
+            reality: "",
+            progress: 0
+          })
           wx.showToast({
-            title: '已发布您的梦想，记得要坚持下去啊！',
+            title: '已发布，记得要坚持下去啊！',
             icon: 'success',
             duration: 2000
           })
