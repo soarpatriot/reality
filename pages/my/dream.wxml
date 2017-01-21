@@ -13,7 +13,7 @@
             </view>
             <view class="one-dream-content">
                 <text class="nickname">{{item.nickname}}</text>
-                <navigator class="dream" url="show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
+                <navigator class="dream" url="../dreams/show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
                 <text class="nickname">{{item.created_at}}</text>
 
 
