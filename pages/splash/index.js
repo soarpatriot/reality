@@ -11,7 +11,7 @@ var page = {
     onLoad: function () {
         // 页面初始化 options为页面跳转所带来的参数
         var that = this
-        console.log("userInfo")
+        //console.log("userInfo")
         //调用应用实例的方法获取全局数据
         app.getUserInfo(function(userInfo){
         //更新数据
@@ -31,7 +31,7 @@ var page = {
         
             //console.log(user)
             var userJson = JSON.stringify(user);
-            console.log(userJson)
+            //console.log(userJson)
             //网络请求
             wx.request( {
                 url: 'https://api.dreamreality.cn/users/me',

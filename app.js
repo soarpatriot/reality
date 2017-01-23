@@ -5,10 +5,7 @@ App({
     //var logs = wx.getStorageSync('logs') || []
     //logs.unshift(Date.now())
     //wx.setStorageSync('logs', logs)
-    this.getUserInfo(function(userInfo){
-      //wx.setStorageSync('user', userInfo)
-      //console.log("res" + userInfo)
-    });
+
   },
 
 
@@ -36,7 +33,7 @@ App({
             method: "GET",
     
             success: function( response ) {
-              that.globalData.sessionInfo = response.data
+              //that.globalData.sessionInfo = response.data
 
               //console.log("resssss: "  +  JSON.stringify(res))
               wx.getUserInfo({
@@ -64,7 +61,6 @@ App({
     }
   },
   globalData:{
-    sessionInfo: null,
     userInfo:null
   }
 })
