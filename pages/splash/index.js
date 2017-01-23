@@ -29,7 +29,7 @@ var page = {
                 avatar_url: userInfo.avatarUrl
             }
         
-            console.log(user)
+            //console.log(user)
             var userJson = JSON.stringify(user);
             console.log(userJson)
             //网络请求
@@ -41,11 +41,11 @@ var page = {
                 method: "POST",
                 data: userJson,
                 success: function( res ) {
-                console.log("data:" + JSON.stringify(res.data.data))
-                that.setData({
-                    userInfo:res.data.data
-                })
-                app.globalData.userInfo = res.data.data
+                
+                    that.setData({
+                        userInfo:res.data.data
+                    })
+                    app.globalData.userInfo = res.data.data
                 },
                 fail: function(error){
                     console.log(error)
@@ -77,13 +77,13 @@ var page = {
             })
         }.bind(this), 1000)
         
-        console.log("show")
+        //console.log("show")
         setTimeout(function(){
-            console.log("show  30000")
+            //console.log("show  30000")
         	wx.switchTab({
 	            url: '../dreams/dreams',
                 success: function(){
-                    console.log('success');
+                    //console.log('success');
                 },
                 fail: function(data){
                     console.log('fail:'+JSON.stringify(data));

@@ -6,15 +6,15 @@ App({
     //logs.unshift(Date.now())
     //wx.setStorageSync('logs', logs)
     this.getUserInfo(function(userInfo){
-      wx.setStorageSync('user', userInfo)
-      console.log("res" + userInfo)
+      //wx.setStorageSync('user', userInfo)
+      //console.log("res" + userInfo)
     });
   },
 
 
   getUserInfo:function(cb){
     var that = this
-    console.log("d:"  +  this.globalData.userInfo)
+    // console.log("d:"  +  this.globalData.userInfo)
     if(this.globalData.userInfo){
       typeof cb == "function" && cb(this.globalData.userInfo)
     }else{
