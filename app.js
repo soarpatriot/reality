@@ -1,14 +1,64 @@
 //app.js
+import {userInfo, login, request} from './utils/user.js'
+import Promise from './utils/bluebird.js';
 App({
   onLaunch: function () {
     //调用API从本地缓存中获取数据
     //var logs = wx.getStorageSync('logs') || []
     //logs.unshift(Date.now())
     //wx.setStorageSync('logs', logs)
-
+    //getUserInfo()
   },
-
-
+  globalData: {
+    
+  },
+  getUserInfo: function(){
+    let user, sess, cusUser
+    let uu = userInfo().then((res)=>{
+      user = res
+      //console.log("user info:" + JSON.stringify(res))
+    })
+    
+    let lo = login()
+      .then(req)
+      .then(session)
+      .catch(function () {
+        //console.error("get location failed")
+      })
+    return Promise.all([lo, uu]).then(()=>{
+      //console.log("user info:  " + JSON.stringify(user))
+      //console.log("sess info:  " + JSON.stringify(sess))
+      
+      cusUser = {
+        userInfo: user.userInfo,
+        session: sess.data
+      }
+      
+      return cusUser
+    },()=>{
+      console.log("info get error")
+    })
+    function req(res){
+      
+        //console.log("login:" + JSON.stringify(res))
+        let openIdUrl = "https://api.weixin.qq.com/sns/jscode2session?" +
+          "appid=wx6ffc32b44af2c5a2&secret=78f22318240a013884282b9e309e3c41&js_code="
+          + res.code + "&grant_type=authorization_code"
+        return request({
+          url: openIdUrl,
+          header: {
+            "Content-Type": "application/json"
+          },
+          method: "GET"
+        })
+    }
+    function session(res){
+      sess = res
+      //console.log("session:" + JSON.stringify(res))
+    }
+  }
+})
+  /** 
   getUserInfo:function(cb){
     var that = this
     // console.log("d:"  +  this.globalData.userInfo)
@@ -64,7 +114,7 @@ App({
     userInfo:null
   }
 })
-
+*/
 
 /**
  *   data: {

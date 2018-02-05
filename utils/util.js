@@ -1,3 +1,25 @@
+//var Promise = require('./bluebird')  
+import Promise from './bluebird.js';
+
+
+function wxPromisify(fn) {
+  return function (obj = {}) {
+    return new Promise((resolve, reject) => {
+      obj.success = function (res) {
+        resolve(res)
+      }
+
+      obj.fail = function (res) {
+        reject(res)
+      }
+
+      fn(obj)
+    })
+  }
+}
+
+
+
 function formatTime(date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
@@ -28,7 +50,6 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
-module.exports = {
-  formatTime: formatTime,
-  randowSlogn: randowSlogn
-}
+let request = wxPromisify(wx.request)
+
+export { formatTime, randowSlogn, wxPromisify,request }

@@ -16,6 +16,7 @@ Page({
     console.log( 'onLoad' )
     var that = this
     app.getUserInfo(function(userInfo){
+    
       //网络请求
       wx.request( {
         url: 'https://api.dreamreality.cn/posts/my',

@@ -2,7 +2,7 @@
 <loading hidden="{{loading}}">
   加载中...
 </loading>
- <scroll-view scroll-top="{{scrollTop}}" style="height: {{windowHeight}}px;" scroll-y="true" bindscrolltolower="loadMore" bindscrolltoupper="refresh"> 
+<scroll-view scroll-top="{{scrollTop}}" style="height: {{windowHeight}}px;" scroll-y="true" bindscrolltolower="loadMore" bindscrolltoupper="refresh"> 
 
     <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="{{index}}">
       <view id="{{index}}" class="one-dream">

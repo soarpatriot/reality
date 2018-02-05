@@ -1,6 +1,15 @@
-var app = getApp()
+import { userFromDb } from '../../utils/user.js'
+import { request } from '../../utils/util.js'
+let app = getApp()
 
 Page({
+  onShareAppMessage: function () {
+    return {
+      title: '自定义分享标题',
+      desc: '自定义分享描述',
+      path: '/page/dreams'
+    }
+  },
   data: {
     pagination: {
        
@@ -16,6 +25,7 @@ Page({
 
   //view加载
   onLoad: function(options) {
+    
     wx.getSystemInfo({
       success: (res) => {
         this.setData({
@@ -24,72 +34,58 @@ Page({
         })
       }
     })
-    //console.log( 'onLoad' )
+    
     this.fetch("refresh")
   },
   fetch: function(direction){
     var that = this
     //console.log("direction: " + direction)
-    app.getUserInfo(function(userInfo){
-        var page = that.data.pagination.page_number || 1
-        if(direction === "more"){
-           page = page +1
-        }else{
-           page = 1
-        }
-        //console.log("page: " + page)
-        //网络请求
-        wx.request( {
-          url: 'https://api.dreamreality.cn/posts?page_size=10&page='+ page,
-          header: {
-            "Content-Type": "application/json"
-          },
-          method: "GET",
-          data: {user_id: userInfo.id},
-          success: function( res ) {
-            //获取到了数据
-            //console.log("success")
-            var pagination = res.data.pagination
-            var dreams = res.data.data;
-            //console.log( dreams );
-            var len = dreams.length;
-            var i = 0
-            for(i = 0; i< len; i++ ){
-              if(dreams[i].favorited === true){
-                dreams[i].up_src = "up_button_blue"
-              }else{
-                dreams[i].up_src = "up_button"
-              }
-              
-            }
-            if(direction === "more" && dreams.length > 0){
-              dreams = that.data.dreams.concat(dreams)
-            }
-            if( dreams.length > 0){
-              that.setData( {
-                dreams: dreams,
-                loading: true
-              })
+    let userId = app.globalData.userId
+    let page = this.data.pagination.page_number || 1
 
-            }else{
-              wx.showToast({
-                title: '无更多数据',
-                duration: 2000
-              })
-            }
-            that.setData( {
-              pagination: pagination,
-              loading: true
-            })
-            
-            //that.update()
-          },
-          fail: function(error){
-              //console.log(error)
+    if(direction === "more"){
+        page = page +1
+    }else{
+        page = 1
+    }  
+    let postsUrl = `https://api.dreamreality.cn/posts?page_size=10&page=${page}`
+    if (userId){
+      postsUrl = `${postsUrl}&user_id=${userId}`
+    }
+    request({
+      url: postsUrl,
+      header: {
+        "Content-Type": "application/json"
+      },
+      method: "GET"})
+      .then((res) => {
+        let pagination = res.data.pagination
+        let dreams = res.data.data;
+        console.log(dreams);
+        let len = dreams.length;
+        let i = 0
+        for (i = 0; i < len; i++) {
+          if (dreams[i].favorited === true) {
+            dreams[i].up_src = "up_button_blue"
+          } else {
+            dreams[i].up_src = "up_button"
           }
-        });
-    })
-    
+
+        }
+        if (direction === "more" && dreams.length > 0) {
+          dreams = this.data.dreams.concat(dreams)
+        }
+        if (dreams.length > 0) {
+          this.setData({
+            dreams: dreams,
+            loading: true
+          })
+        }
+        this.setData({
+          pagination: pagination,
+          loading: true
+        })
+      })
   },
   onShow: function(e) {
 
@@ -156,12 +152,18 @@ Page({
     // 下拉刷新，重新加载数据； 
     // TODO，不重新加载，只更新对应列表；
     //console.log("pull");
-    this.setData( {
-          loading: false,
-          scrollTop : 0
-    })
+    if (!this.data.loading) {
+      return
+    }
 
-    this.fetch("refresh")
+    setTimeout(()=>{
+      this.setData({
+        loading: false,
+        scrollTop: 0
+      })
+      this.fetch("refresh")
+    }, 300)
+    
     //wx.stopPullDownRefresh();
     
     //this.onLoad({direction: "refresh"})
@@ -169,11 +171,17 @@ Page({
   loadMore: function() {
     // Do something when pull down.
      //console.log('刷新')
-     this.setData( {
-          loading: false
-    })
-    this.fetch("more")
+    if (!this.data.loading){
+      return 
+    }
 
+    //this.fetch("more")
+    setTimeout(() => {
+      this.setData({
+        loading: false
+      })
+      this.fetch("more")
+    }, 300)
     // this.onLoad({direction: "more"})
     // wx.stopPullDownRefresh();
    },

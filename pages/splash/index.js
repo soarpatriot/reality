@@ -1,57 +1,16 @@
 
-var utils = require('../../utils/util.js')
-var app = getApp()
+//var utils = require('../../utils/util.js')
+import { randowSlogn,request } from '../../utils/util.js'
+let app = getApp()
 var page = {
 
     data: {
         // text:"这是一个页面"
-        slogan: utils.randowSlogn(),
+        slogan: randowSlogn(),
         animationData: {}
     },
     onLoad: function () {
-        // 页面初始化 options为页面跳转所带来的参数
-        var that = this
-        //console.log("userInfo")
-        //调用应用实例的方法获取全局数据
-        app.getUserInfo(function(userInfo){
-        //更新数据
-        //console.log("userInfo")
-        //console.log(userInfo)
 
-
-            var user = {
-                nickname: userInfo.nickName,
-                gender: userInfo.gender,
-                city: userInfo.city,
-                province: userInfo.province,
-                country: userInfo.country,
-                openid: userInfo.openid,
-                avatar_url: userInfo.avatarUrl
-            }
-        
-            //console.log(user)
-            var userJson = JSON.stringify(user);
-            //console.log(userJson)
-            //网络请求
-            wx.request( {
-                url: 'https://api.dreamreality.cn/users/me',
-                header: {
-                "Content-Type": "application/json"
-                },
-                method: "POST",
-                data: userJson,
-                success: function( res ) {
-                
-                    that.setData({
-                        userInfo:res.data.data
-                    })
-                    app.globalData.userInfo = res.data.data
-                },
-                fail: function(error){
-                    console.log(error)
-                }
-            })
-        })
     },
 
     onShow: function () {
@@ -80,15 +39,46 @@ var page = {
         //console.log("show")
         setTimeout(function(){
             //console.log("show  30000")
-        	wx.switchTab({
-	            url: '../dreams/dreams',
-                success: function(){
-                    //console.log('success');
-                },
-                fail: function(data){
-                    console.log('fail:'+JSON.stringify(data));
-                }
-	        })
+          app.getUserInfo().then((res)=>{
+            app.user = res.userInfo
+            //console.log("mmmmm user info:  " + JSON.stringify(res))
+            let user = app.user
+            let userStr = {
+              province: user.province,
+              openid: res.session.openid,
+              nickname: user.nickName,
+              
+              gender: user.gender,
+              country: user.country,
+              city: user.city,
+              avatar_url: user.avatarUrl
+            }
+            return request({
+              url: "https://api.dreamreality.cn/users/me",
+              header: {
+                "Content-Type": "application/json"
+              },
+              data: userStr,
+              method: "POST"
+            })
+            
+          }).then((res) =>{
+            // set the save user id
+            app.user.id = res.data.data.id
+            app.globalData.userId = res.data.data.id
+    
+            //console.log("after save info:  " + JSON.stringify(res))
+            //console.log("after save info:  " + JSON.stringify(app.user))
+            wx.switchTab({
+              url: '../dreams/index',
+              success: function () {
+                //console.log('success');
+              },
+              fail: function (data) {
+                console.log('fail:' + JSON.stringify(data));
+              }
+            })
+          })
         },3000)
         
     }

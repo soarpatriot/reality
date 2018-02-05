@@ -1,8 +1,8 @@
 {
   "pages":[
     "pages/splash/index",
-    "pages/index/index",
-    "pages/dreams/dreams",
+    
+    "pages/dreams/index",
     "pages/dreams/show",
     "pages/posts/posts",
     "pages/posts/edit",
@@ -23,7 +23,7 @@
     "backgroundColor": "#f6f6f6",
    
     "list": [{
-      "pagePath": "pages/dreams/dreams",
+      "pagePath": "pages/dreams/index",
       "iconPath": "images/cloud-black.png",
       "selectedIconPath": "images/cloud-blue.png",
       "text": "梦想"

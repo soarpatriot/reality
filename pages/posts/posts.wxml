@@ -1,23 +1,29 @@
-<!--index.wxml-->
+
+
 <view class="container main-container">
     <form bindsubmit="formSubmit" bindreset="formReset">
         <view class="section">
             <view class="section__title">梦想：</view>
-            <textarea name="dream" class="write-area" auto-height auto-focus maxlength="250" value="{{dream}}" placeholder="我的梦想" >
+            <textarea name="dream" class="write-area" auto-height    auto-focus maxlength="400" value="{{dream}}" placeholder="我的梦想" >
            
             </textarea>
         </view>
-        <view class="section">
+
+        <!-- 
+                <view class="section">
             <view class="section__title">现实：</view>
             <textarea name="reality" class="write-area" auto-height maxlength="250" value="{{reality}}" placeholder="可爱的现实">
             
             </textarea>
         </view>
-
-        <view class="section section_gap">
+                <view class="section section_gap">
             <view class="section__title">完成(可以更改)</view>
             <slider name="progress" value="0" show-value ></slider>
         </view>
+        -->
+
+
+
 
         <view class="btn-area">
             <button class="publish-btn" formType="submit" type="primary">发布</button>

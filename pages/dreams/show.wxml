@@ -16,11 +16,7 @@
                   {{dream.dream}}
               </view>
             </view>
-            <view class="dream-item">现实： 
-              <view class="dream-text">
-                  {{dream.reality}}
-              </view>
-            </view>
+            
             <view class="dream-item">
               <view class="complete-lable">完成： 
               </view>

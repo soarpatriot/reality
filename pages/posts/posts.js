@@ -10,6 +10,8 @@ Page({
   formSubmit: function(e) {
     var d = e.detail.value
     d.progress = d.progress || 0 
+    let user = app.user
+    console.log(user)
     if(d.dream =="" || d.reality == ""){
       wx.showToast({
         title: '请填写梦想和现实！',
@@ -20,12 +22,13 @@ Page({
 
       var dream = {
         dream: d.dream,
-        reality: d.reality,
-        progress: d.progress,
-        user_id: app.globalData.userInfo.id
+        //reality: d.reality,
+        //progress: d.progress,
+        user_id: user.id
       }
       
       var dreamStr = JSON.stringify(dream)
+      console.log(dreamStr)
       this.post(dreamStr)
 
     }
