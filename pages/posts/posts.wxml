@@ -4,7 +4,7 @@
     <form bindsubmit="formSubmit" bindreset="formReset">
         <view class="section">
             <view class="section__title">梦想：</view>
-            <textarea name="dream" class="write-area" auto-height    auto-focus maxlength="400" value="{{dream}}" placeholder="我的梦想" >
+            <textarea name="dream" class="write-area"  auto-focus maxlength="400" value="{{dream}}" placeholder="我的梦想" >
            
             </textarea>
         </view>

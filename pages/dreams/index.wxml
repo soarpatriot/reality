@@ -2,6 +2,8 @@
 <loading hidden="{{loading}}">
   加载中...
 </loading>
+<view class='main-container container'>
+
 <scroll-view scroll-top="{{scrollTop}}" style="height: {{windowHeight}}px;" scroll-y="true" bindscrolltolower="loadMore" bindscrolltoupper="refresh"> 
 
     <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="{{index}}">
@@ -9,21 +11,27 @@
           <view class="content-area">
             <view class="avatar-view">
                 <image class="avatar" mode="scaleToFill" src="{{item.avatar_url}}"></image>
-
             </view>
+            <view class='pub'>
+              <view class="nickname">
+                  {{item.nickname}}
+              </view>
+              <view class="ago">
+                {{item.published_at}}
+              </view>
+            </view>
+
+          </view>
+            
             <view class="one-dream-content">
-                <view class="nickname">
-                   {{item.nickname}}
-                </view>
+
                 <view class="nav-view">
                     <navigator class="dream" url="show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
                 </view>
 
                 
                 <view class="up-area">
-                    <view class="ago">
-                      {{item.published_at}}
-                    </view>
+
                     <view class="thumb-up">
                       <image animation="{{animationData}}" 
                         data-post-id="{{item.id}}"
@@ -38,24 +46,10 @@
                 </view> 
             
             </view>
-
-          </view>
-            
-               <!--         
-          <form bindsubmit="formSubmit" bindreset="formReset">
-            <input name="id" class="dream-id-input" type="hidden" value="{{item.id}}"/>
-            
-            
-                                <button form-type="submit" bindtap="up" class="up-btn" name="{{item.id}}">
-
-                </button>
-                </form>
-                -->
-           
           
 
       </view>
 
     </block>
   </scroll-view>
-
+</view>

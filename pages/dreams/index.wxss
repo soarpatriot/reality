@@ -6,30 +6,23 @@
 
 .one-dream{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    padding: 20rpx 0;
     border-bottom:  solid 2rpx #eee;
 }
 .content-area{
-    flex: 1;
-
+    flex-direction: row;
     display: flex;
-    padding: 20rpx 30rpx;
-    
+    padding-bottom: 0;
 }
-.nickname{
-    flex: 1;
-    font-size: 14px;
-    width: 100%;
-    color: #333;
-}
+
 .dream{
     padding: 20rpx 0;
 }
 .one-dream-content{
-    flex: 1;
+    
     color: #666;
     font-size: 14px;
-    padding-left: 30rpx;
     display: flex;
     flex-direction: column;
 }
@@ -37,7 +30,7 @@
     
 }
 .up-image{
-   padding: 0 20rpx;
+   padding-right: 20rpx;
    width: 40rpx;
    height: 40rpx; 
 }
@@ -64,9 +57,21 @@
     justify-content: space-between;
    
 }
+.pub{
+  flex-direction: column;
+  display: flex;
+  
+  margin-left: 30rpx;
+  justify-content: space-between;
+}
 .ago{
-    flex: auto;
-   
+  font-size: 12px;
+  padding-bottom: 10rpx;
+  color:#767676;
+}
+.nickname{
+  font-size: 14px;
+  color: #333;
 }
 .thumb-up{
     

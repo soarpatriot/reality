@@ -99,6 +99,7 @@ Page({
   up: function( e ){
       //event.target.dataset.id 
     var that = this
+    let userId = app.globalData.userId
     var index = e.target.dataset.index
     var postId = e.target.dataset.postId
     var dreams = that.data.dreams
@@ -112,13 +113,11 @@ Page({
       dreams: dreams
     })
 
-    app.getUserInfo(function(userInfo){
+    
 
-      //console.log("user_id: " + user.id)
-      //console.log("user_id2: " + app.globalData.userInfo.id)
       var fav = {
         favorite: {
-          user_id: userInfo.id,
+          user_id: userId,
           post_id: postId
         }
       }
@@ -132,7 +131,7 @@ Page({
         data: JSON.stringify(fav),
         success: function( res ) {
           //获取到了数据
-          console.log("success")
+          console.log(JSON.stringify(res))
           var favorite = res.data.data;
           dreams[index].count = favorite.count
           that.setData( {
@@ -144,8 +143,6 @@ Page({
             console.log(error)
         }
       });
-
-    })
     
   },
   refresh: function() {
