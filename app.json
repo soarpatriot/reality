@@ -11,6 +11,7 @@
     "pages/logs/logs"
   ],
   "window":{
+    "enablePullDownRefresh": true,
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#4DBBFF",
     "navigationBarTitleText": "梦想照进现实",

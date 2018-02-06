@@ -1,11 +1,4 @@
-
-<loading hidden="{{loading}}">
-  加载中...
-</loading>
-<view class='container'>
-
-<scroll-view scroll-top="{{scrollTop}}" style="height: {{windowHeight}}px;" scroll-y="true" bindscrolltolower="loadMore" bindscrolltoupper="refresh"> 
-
+<view class='container'> 
     <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="{{index}}">
       <view id="{{index}}" class="one-dream">
           <view class="content-area">
@@ -51,5 +44,10 @@
       </view>
 
     </block>
-  </scroll-view>
 </view>
+
+<view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+</view>
+

@@ -62,7 +62,7 @@ Page({
           setTimeout(function(){
 
               wx.switchTab({
-                  url: '../dreams/dreams',
+                  url: '../dreams/index',
                     success: function(){
                         console.log('success');
                     },

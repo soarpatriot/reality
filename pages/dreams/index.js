@@ -3,6 +3,19 @@ import { request } from '../../utils/util.js'
 let app = getApp()
 
 Page({
+  onPullDownRefresh: function () {
+    console.log("pull")
+    wx.showNavigationBarLoading()
+    this.fetch("refresh")
+    
+  },
+  onReachBottom: function () {
+    console.log('加载更多')
+    this.setData({
+      isHideLoadMore: false
+    })
+    this.loadMore()
+  },
   onShareAppMessage: function () {
     return {
       title: '自定义分享标题',
@@ -15,25 +28,17 @@ Page({
        
     },
     scrollTop : 0,
-    loading: false,
-    windowHeight: 0,
-    windowWidth: 0,
+
+
     up: "up_button.png",
     dreams: [],
+    isHideLoadMore: true,
     animationData: {}
   },
 
   //view加载
   onLoad: function(options) {
-    
-    wx.getSystemInfo({
-      success: (res) => {
-        this.setData({
-          windowHeight: res.windowHeight,
-          windowWidth: res.windowWidth
-        })
-      }
-    })
+    wx.showNavigationBarLoading()
     
     this.fetch("refresh")
   },
@@ -59,6 +64,11 @@ Page({
       },
       method: "GET"})
       .then((res) => {
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh()
+        this.setData({
+          isHideLoadMore: true
+        })
         let pagination = res.data.pagination
         let dreams = res.data.data;
         console.log(dreams);
@@ -78,12 +88,12 @@ Page({
         if (dreams.length > 0) {
           this.setData({
             dreams: dreams,
-            loading: true
+            
           })
         }
         this.setData({
           pagination: pagination,
-          loading: true
+          
         })
       })
   },
@@ -100,7 +110,7 @@ Page({
       //event.target.dataset.id 
     var that = this
     let userId = app.globalData.userId
-    var index = e.target.dataset.index
+    let index = e.target.dataset.index
     var postId = e.target.dataset.postId
     var dreams = that.data.dreams
     if(dreams[index].up_src === "up_button_blue"){
@@ -108,81 +118,48 @@ Page({
     }else{
       dreams[index].up_src = "up_button_blue"
     }
-     
     this.setData( {
       dreams: dreams
     })
-
-    
-
-      var fav = {
-        favorite: {
-          user_id: userId,
-          post_id: postId
-        }
+    let fav = {
+      favorite: {
+        user_id: userId,
+        post_id: postId
       }
-      //网络请求
-      wx.request( {
-        url: 'https://api.dreamreality.cn/favorites/up',
-        header: {
-          "Content-Type": "application/json"
-        },
-        method: "POST",
-        data: JSON.stringify(fav),
-        success: function( res ) {
-          //获取到了数据
-          console.log(JSON.stringify(res))
-          var favorite = res.data.data;
-          dreams[index].count = favorite.count
-          that.setData( {
-            dreams: dreams
-          })
-          
-        },
-        fail: function(error){
-            console.log(error)
-        }
-      });
+    }
+    //网络请求
+    wx.request( {
+      url: 'https://api.dreamreality.cn/favorites/up',
+      header: {
+        "Content-Type": "application/json"
+      },
+      method: "POST",
+      data: JSON.stringify(fav),
+      success: function( res ) {
+        //获取到了数据
+        console.log(JSON.stringify(res))
+        var favorite = res.data.data;
+        dreams[index].count = favorite.count
+        that.setData( {
+          dreams: dreams
+        })
+        
+      },
+      fail: function(error){
+          console.log(error)
+      }
+    });
     
   },
   refresh: function() {
-    // 下拉刷新，重新加载数据； 
-    // TODO，不重新加载，只更新对应列表；
-    //console.log("pull");
-    if (!this.data.loading) {
-      return
-    }
-
-    setTimeout(()=>{
-      this.setData({
-        loading: false,
-        scrollTop: 0
-      })
-      this.fetch("refresh")
-    }, 300)
-    
-    //wx.stopPullDownRefresh();
-    
-    //this.onLoad({direction: "refresh"})
+    this.fetch("refresh")
   },
   loadMore: function() {
-    // Do something when pull down.
-     //console.log('刷新')
-    if (!this.data.loading){
-      return 
-    }
 
-    //this.fetch("more")
-    setTimeout(() => {
-      this.setData({
-        loading: false
-      })
-      this.fetch("more")
-    }, 300)
-    // this.onLoad({direction: "more"})
-    // wx.stopPullDownRefresh();
-   },
-   scroll:function(event){
+    this.fetch("more")
+
+  },
+  scroll:function(event){
     //   该方法绑定了页面滚动时的事件，我这里记录了当前的position.y的值,为了请求数据之后把页面定位到这里来。
      this.setData({
          scrollTop : event.detail.scrollTop
@@ -198,8 +175,6 @@ Page({
     //  animationData: this.animation.export()
     //})
     this.setData({up: "up_button_blue.png"})
-    //console.log("id info ......." + id)
-    //console.log("img info ......." + img)
-    
+
   }
 })
