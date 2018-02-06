@@ -127,12 +127,11 @@ Page({
     this.setData( {
       dreams: dreams
     })
-    var user =  wx.getStorageSync('user')
-    console.log("user_id: " + user.id)
-    console.log("user_id2: " + app.globalData.userInfo.id)
+    let userId = app.globalData.userId
+    console.log("user_id2: " + userId)
     var fav = {
       favorite: {
-        user_id: app.globalData.userInfo.id,
+        user_id: userId,
         post_id: postId
       }
     }

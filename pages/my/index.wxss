@@ -12,7 +12,7 @@
 
 .me{
     margin-bottom: 30rpx;
-    padding: 40rpx;
+    padding: 30rpx;
     display: flex;
     width: 100%;
     background: #ffffff;
@@ -33,9 +33,9 @@
     display: flex;
     align-items: center;
 
-    padding: 40rpx;
+    padding: 30rpx;
     background-color: #ffffff;
-    margin-bottom: 40rpx;
+    margin-bottom: 30rpx;
 }
 
 .dreams-icon{
