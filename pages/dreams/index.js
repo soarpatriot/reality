@@ -97,10 +97,21 @@ Page({
   },
   up: function( e ){
       //event.target.dataset.id 
-    
+    this.animation.scale(2, 2).step()
+    this.animation.scale(1, 1).step()
+
+
     let userId = app.globalData.userId
     let {index, postId } = e.target.dataset
     let dreams = this.data.dreams
+    let an = {}
+    //const name = `animationData_${index}`
+    //console.log(name)
+    //an[name] = this.animation.export()
+    this.setData({
+      animationData0: this.animation.export()
+    })
+    // e.target.animation = animationData
 
     dreams[index].up_src === "up_button_blue" ? dreams[index].up_src = "up_button" : dreams[index].up_src = "up_button_blue"
 
@@ -150,6 +161,13 @@ Page({
      this.setData({
          scrollTop : event.detail.scrollTop
      });
+  },
+  thumbAnimation: function() {
+    this.animation.scale(2, 2).step()
+    this.animation.scale(1, 1).step()
+    this.setData({
+      animationData: this.animation.export()
+    })
   }
 
 })

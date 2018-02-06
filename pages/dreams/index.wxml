@@ -26,7 +26,7 @@
                 <view class="up-area">
 
                     <view class="thumb-up">
-                      <image animation="{{animationData}}" 
+                      <image animation="{{'animationData' + index}}" 
                         data-post-id="{{item.id}}"
                         data-index="{{index}}"
                         bindtap="up"

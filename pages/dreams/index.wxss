@@ -119,3 +119,24 @@ button::after{
   vertical-align: middle;
 }
 
+/**
+* animation
+*/
+
+.view1 {
+   background: red;
+   animation: animation1 5s;
+}
+
+
+
+@keyframes animation1 {
+
+   from {
+       background: red;
+   }
+   to {
+       background: yellow;
+   }
+}
+

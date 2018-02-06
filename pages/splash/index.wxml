@@ -2,7 +2,7 @@
 bindtap="skipToMain" animation="{{animationData}}">
   <view class="landing">
     <view >
-        <image class="userinfo-avatar" src="../../images/air.png" background-size="cover"></image>
+        <image class="userinfo-avatar" src="../../images/dream.svg" background-size="cover"></image>
     </view>
     <view class="slogan">
         <text>{{slogan}}</text>
