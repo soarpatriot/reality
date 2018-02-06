@@ -28,7 +28,7 @@
     flex-direction: column;
 }
 .nav-view{
-    padding: 20rpx 0;
+  padding: 20rpx 0; 
 }
 .up-image{
    padding-right: 20rpx;

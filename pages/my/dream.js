@@ -15,7 +15,8 @@ Page({
   onLoad: function() {
     console.log( 'onLoad' )
     var that = this
-    app.getUserInfo(function(userInfo){
+    let userId = app.globalData.userId
+    
     
       //网络请求
       wx.request( {
@@ -24,7 +25,7 @@ Page({
           "Content-Type": "application/json"
         },
         method: "GET",
-        data: {user_id: userInfo.id},
+        data: {user_id: userId},
         success: function( res ) {
           //获取到了数据
           console.log("success")
@@ -51,7 +52,7 @@ Page({
             console.log(error)
         }
       });
-    })
+  
 
   },
   onShow: function(e) {

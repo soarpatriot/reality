@@ -1,7 +1,9 @@
 // pages/posts/posts.js
 var app = getApp()
 Page({
-  data:{},
+  data:{
+    dream: null
+  },
 
   formSubmit: function(e) {
     var d = e.detail.value
@@ -51,9 +53,9 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
     var that = this
     // 页面初始化 options为页面跳转所带来的参数
-       
+    let userId = app.globalData.userId
     //网络请求
-    var oneUrl = "https://api.dreamreality.cn/posts/"+options.id
+    var oneUrl = `https://api.dreamreality.cn/posts/${options.id}?user_id=${userId}`
     wx.request( {
       url: oneUrl,
       header: {
@@ -63,8 +65,8 @@ Page({
       
       success: function( res ) {
         //获取到了数据
-        console.log("success")
-        var dream = res.data.data;
+        
+        var dream = res.data;
         console.log( dream );
         that.setData( {
           dream: dream
