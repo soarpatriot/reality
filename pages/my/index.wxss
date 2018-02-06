@@ -3,6 +3,7 @@
 .my{
     background-color: #eeeeee;
     height: 100%;
+
 }
 
 .feature{
@@ -10,12 +11,13 @@
 }
 
 .me{
-    margin: 40rpx 0;
-    padding: 20px;
+    margin-bottom: 30rpx;
+    padding: 40rpx;
     display: flex;
     width: 100%;
     background: #ffffff;
     flex-direction: row;
+    align-items: center;
 }
 .avatar{
   width: 44px;

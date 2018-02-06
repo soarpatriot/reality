@@ -1,6 +1,6 @@
 
 
-<view class="container main-container">
+<view class="container">
     <form bindsubmit="formSubmit" bindreset="formReset">
         <view class="section">
             <view class="section__title">梦想：</view>

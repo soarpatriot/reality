@@ -1,13 +1,14 @@
-<view class="container my">
+<view class="full-container my">
   
   <view class="feature">
       <view class="me">
         <image class="avatar" mode="scaleToFill" 
           src="{{user.avatar_url}}">
         </image>
-        <text class="nickname">
+        <view class="nickname">
           {{user.nickname}}
-        </text>
+        </view>
+
 
       </view>
       <navigator class="dream" url="dream"   hover-class="navigator-hover">

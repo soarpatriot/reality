@@ -1,6 +1,6 @@
 /* pages/posts/posts.wxss */
 .section {
-    margin-bottom:20px;
+    margin:20rpx;
 }
 
 .publish-btn{
@@ -8,6 +8,6 @@
     font-size: 14px;
 }
 .write-area{
-    padding: 20rpx;
+    margin-top: 20rpx;
     font-size: 14px;
 }

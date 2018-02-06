@@ -8,7 +8,8 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
        
     //网络请求
-    var userId = app.globalData.userInfo.id
+    
+    let userId = app.globalData.userId
     var oneUrl = "https://api.dreamreality.cn/users/"+userId
     wx.request( {
       url: oneUrl,
