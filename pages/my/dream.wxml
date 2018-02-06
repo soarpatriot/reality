@@ -25,7 +25,7 @@
             <view class="one-dream-content">
 
                 <view class="nav-view">
-                    <navigator class="dream" url="show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
+                    <navigator class="dream" url="../dreams/show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
                 </view>
 
                 
