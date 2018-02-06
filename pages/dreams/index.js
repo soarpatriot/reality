@@ -43,16 +43,12 @@ Page({
     this.fetch("refresh")
   },
   fetch: function(direction){
-    var that = this
-    //console.log("direction: " + direction)
+  
     let userId = app.globalData.userId
     let page = this.data.pagination.page_number || 1
 
-    if(direction === "more"){
-        page = page +1
-    }else{
-        page = 1
-    }  
+    direction === "more" ? page++ : page = 1
+
     let postsUrl = `https://api.dreamreality.cn/posts?page_size=10&page=${page}`
     if (userId){
       postsUrl = `${postsUrl}&user_id=${userId}`
@@ -70,31 +66,25 @@ Page({
           isHideLoadMore: true
         })
         let pagination = res.data.pagination
-        let dreams = res.data.data;
-        console.log(dreams);
-        let len = dreams.length;
-        let i = 0
-        for (i = 0; i < len; i++) {
-          if (dreams[i].favorited === true) {
-            dreams[i].up_src = "up_button_blue"
-          } else {
-            dreams[i].up_src = "up_button"
-          }
+        let pulledDreams = res.data.data
+        let dreams = this.data.dreams
+        // console.log(pulledDreams);
 
-        }
-        if (direction === "more" && dreams.length > 0) {
-          dreams = this.data.dreams.concat(dreams)
-        }
-        if (dreams.length > 0) {
+        pulledDreams.map((dream) => {
+          dream.favorited === true ? dream.up_src = "up_button_blue" : dream.up_src = "up_button"
+        })
+
+        if (pulledDreams.length > 0) {
+          direction === "more" ? dreams = this.data.dreams.concat(pulledDreams) : dreams = pulledDreams
           this.setData({
-            dreams: dreams,
-            
+            dreams: dreams
+
           })
         }
         this.setData({
           pagination: pagination,
-          
         })
+        
       })
   },
   onShow: function(e) {
@@ -108,16 +98,13 @@ Page({
   },
   up: function( e ){
       //event.target.dataset.id 
-    var that = this
+    
     let userId = app.globalData.userId
-    let index = e.target.dataset.index
-    var postId = e.target.dataset.postId
-    var dreams = that.data.dreams
-    if(dreams[index].up_src === "up_button_blue"){
-      dreams[index].up_src = "up_button"
-    }else{
-      dreams[index].up_src = "up_button_blue"
-    }
+    let {index, postId } = e.target.dataset
+    let dreams = this.data.dreams
+
+    dreams[index].up_src === "up_button_blue" ? dreams[index].up_src = "up_button" : dreams[index].up_src = "up_button_blue"
+
     this.setData( {
       dreams: dreams
     })
@@ -135,12 +122,12 @@ Page({
       },
       method: "POST",
       data: JSON.stringify(fav),
-      success: function( res ) {
+      success: ( res ) => {
         //获取到了数据
-        console.log(JSON.stringify(res))
+        // console.log(JSON.stringify(res))
         var favorite = res.data.data;
         dreams[index].count = favorite.count
-        that.setData( {
+        this.setData( {
           dreams: dreams
         })
         
@@ -164,17 +151,6 @@ Page({
      this.setData({
          scrollTop : event.detail.scrollTop
      });
-  },
-  formSubmit: function(e) {
-    var d = e.detail.value
-    var id = d.id 
-    var img = d.image
-    //this.animation.scale(2, 2).step()
-    //this.animation.scale(0.5,0.5).step()
-    //this.setData({
-    //  animationData: this.animation.export()
-    //})
-    this.setData({up: "up_button_blue.png"})
-
   }
+
 })

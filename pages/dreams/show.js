@@ -10,8 +10,7 @@ Page({
 
   formSubmit: function(e) {
     let d = e.detail.value
-    let content = d.content
-    let postId = d.postId
+    let {content, postId } = d
     let userId = app.globalData.userId
     
     if (content == "" || postId == "" || userId<= 0){
