@@ -2,35 +2,41 @@
 <loading hidden="{{loading}}">
   加载中...
 </loading>
- <scroll-view style="height: {{windowHeight}}px; width: {{windowWidth}}px; " scroll-y="true"> 
+<view class='container'>
+ <scroll-view scroll-top="{{scrollTop}}" style="height: {{windowHeight}}px;" scroll-y="true" bindscrolltolower="loadMore" bindscrolltoupper="refresh"> 
 
     <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="{{index}}">
       <view id="{{index}}" class="one-dream">
           <view class="content-area">
             <view class="avatar-view">
                 <image class="avatar" mode="scaleToFill" src="{{item.avatar_url}}"></image>
-
             </view>
+            <view class='pub'>
+              <view class="nickname">
+                  {{item.nickname}}
+              </view>
+              <view class="ago">
+                {{item.published_at}}
+              </view>
+            </view>
+
+          </view>
+            
             <view class="one-dream-content">
-                <text class="nickname">{{item.nickname}}</text>
-                <navigator class="dream" url="../dreams/show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
-                <text class="nickname">{{item.created_at}}</text>
 
+                <view class="nav-view">
+                    <navigator class="dream" url="show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
+                </view>
 
-            </view>
-          </view>
-          <view class="up-area">
-
-                  
-          </view>
-          <view class="up-area">
+                
+               <view class="up-area">
                 <image animation="{{animationData}}" 
                     data-post-id="{{item.id}}"
-                    data-index="{{index}}"
+                   data-index="{{index}}"
                     bindtap="delete"
-                    class="up-image" 
-                    src="../../images/delete.png"
-                     background-size="cover"></image>
+                   class="up-image" 
+                   src="../../images/delete.png"
+                    background-size="cover"></image>
                 <image animation="{{animationData}}" 
                     data-post-id="{{item.id}}"
                     data-index="{{index}}"
@@ -47,9 +53,13 @@
                      background-size="cover"></image>
                 <text class="favorite">{{item.count}}</text>  
            </view>   
+            
+            </view>
+          
 
       </view>
 
     </block>
   </scroll-view>
 
+</view>

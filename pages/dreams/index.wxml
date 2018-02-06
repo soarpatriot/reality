@@ -2,7 +2,7 @@
 <loading hidden="{{loading}}">
   加载中...
 </loading>
-<view class='main-container container'>
+<view class='container'>
 
 <scroll-view scroll-top="{{scrollTop}}" style="height: {{windowHeight}}px;" scroll-y="true" bindscrolltolower="loadMore" bindscrolltoupper="refresh"> 
 

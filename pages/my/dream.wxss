@@ -1,7 +1,3 @@
-.dream-list{
-
-    
-}
 
 .avatar{
   width: 44px;
@@ -9,36 +5,32 @@
 }
 
 .one-dream{
-    width: 100%;
     display: flex;
     flex-direction: column;
+    padding: 20rpx 0;
     border-bottom:  solid 2rpx #eee;
 }
 .content-area{
-    width: 100%;
+    flex-direction: row;
     display: flex;
-    padding: 20rpx 30rpx;
-    
+    padding-bottom: 0;
 }
-.nickname{
-    font-size: 14px;
-    color: #333;
-}
+
 .dream{
     padding: 20rpx 0;
 }
 .one-dream-content{
     
     color: #666;
-    font-size: 12px;
-    padding: 0 30rpx;
+    font-size: 14px;
     display: flex;
-    width: 100%;
     flex-direction: column;
 }
-
+.nav-view{
+    
+}
 .up-image{
-   padding: 0 20rpx;
+   padding-right: 20rpx;
    width: 40rpx;
    height: 40rpx; 
 }
@@ -55,14 +47,38 @@
 }
 
 .up-area{
-    width: 100%;
+    
+    font-size: 10px;
+    color: #888;
     padding: 10rpx 0;
     display: flex;
-    flex-direction: row;
+    
+    align-items: center;
     justify-content: flex-end;
-    align-items: baseline;
+   
 }
-
+.pub{
+  flex-direction: column;
+  display: flex;
+  
+  margin-left: 30rpx;
+  justify-content: space-between;
+}
+.ago{
+  font-size: 12px;
+  padding-bottom: 10rpx;
+  color:#767676;
+}
+.nickname{
+  font-size: 14px;
+  color: #333;
+}
+.thumb-up{
+    
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
 button::after{
     border: 0 solid #fff;
 }
@@ -73,5 +89,6 @@ button::after{
 .favorite{
     margin-right: 20rpx;
     display: block;
-    font-size: 12px;
+    font-size: 10px;
+    
 }

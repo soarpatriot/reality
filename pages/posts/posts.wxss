@@ -1,6 +1,6 @@
 /* pages/posts/posts.wxss */
 .section {
-    margin:20rpx;
+    margin-top: 20rpx;
 }
 
 .publish-btn{
