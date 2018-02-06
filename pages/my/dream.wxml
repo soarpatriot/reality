@@ -1,9 +1,6 @@
 
-<loading hidden="{{loading}}">
-  加载中...
-</loading>
+<view class='container'> 
 
- <scroll-view upper-threshold="0" lower-threshold="0" scroll-y="true" bindscrolltolower="loadMore" bindscrolltoupper="refresh" class='container'> 
 
     <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="{{index}}">
       <view id="{{index}}" class="one-dream">
@@ -60,5 +57,4 @@
       </view>
 
     </block>
-  </scroll-view>
-
+</view>

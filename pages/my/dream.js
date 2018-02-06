@@ -1,75 +1,85 @@
-var app = getApp()
+import { request } from '../../utils/util.js'
+
+let app = getApp()
 
 Page({
   data: {
-    loading: false,
-    windowHeight: 0,
-    windowWidth: 0,
+    pagination: {
+
+    },
     up: "up_button.png",
     dreams: [],
     animationData: {}
   },
 
-
-  //view加载
-  onLoad: function() {
-    console.log( 'onLoad' )
-    var that = this
-    let userId = app.globalData.userId
-    
-    
-      //网络请求
-      wx.request( {
-        url: 'https://api.dreamreality.cn/posts/my',
-        header: {
-          "Content-Type": "application/json"
-        },
-        method: "GET",
-        data: {user_id: userId},
-        success: function( res ) {
-          //获取到了数据
-          console.log("success")
-          var dreams = res.data.data;
-          console.log( dreams );
-          var len = dreams.length;
-          var i = 0
-          for(i = 0; i< len; i++ ){
-            if(dreams[i].favorited === true){
-              dreams[i].up_src = "up_button_blue"
-            }else{
-              dreams[i].up_src = "up_button"
-            }
-            
-          }
-          that.setData( {
-            dreams: dreams,
-            loading: true
-          })
-          
-          //that.update()
-        },
-        fail: function(error){
-            console.log(error)
-        }
-      });
-  
+  onPullDownRefresh: function () {
+    console.log("pull")
+    wx.showNavigationBarLoading()
+    this.fetch("refresh")
 
   },
-  onShow: function(e) {
-    wx.getSystemInfo({
-      success: (res) => {
-        this.setData({
-          windowHeight: res.windowHeight,
-          windowWidth: res.windowWidth
-        })
-      }
+  onReachBottom: function () {
+    console.log('加载更多')
+    this.setData({
+      isHideLoadMore: false
     })
-    var animation = wx.createAnimation({
-      duration: 1000,
-        timingFunction: 'ease',
-    })
+    this.loadMore()
+  },
+  //view加载
+  //view加载
+  onLoad: function (options) {
+    wx.showNavigationBarLoading()
 
-    this.animation = animation
+    this.fetch("refresh")
+  },
+  fetch: function (direction) {
+
+    let userId = app.globalData.userId
+    let page = this.data.pagination.page_number || 1
+
+    direction === "more" ? page++ : page = 1
+
+    let postsUrl = `https://api.dreamreality.cn/posts?page_size=10&page=${page}`
+    if (userId) {
+      postsUrl = `${postsUrl}&user_id=${userId}`
+    }
+    request({
+      url: postsUrl,
+      header: {
+        "Content-Type": "application/json"
+      },
+      method: "GET"
+    })
+      .then((res) => {
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh()
+        this.setData({
+          isHideLoadMore: true
+        })
+        let pagination = res.data.pagination
+        let pulledDreams = res.data.data
+        let dreams = this.data.dreams
+        // console.log(pulledDreams);
+
+        pulledDreams.map((dream) => {
+          dream.favorited === true ? dream.up_src = "up_button_blue" : dream.up_src = "up_button"
+        })
+
+        if (pulledDreams.length > 0) {
+          direction === "more" ? dreams = this.data.dreams.concat(pulledDreams) : dreams = pulledDreams
+          this.setData({
+            dreams: dreams
+
+          })
+        }
+        this.setData({
+          pagination: pagination,
+        })
+
+      })
+  },
+  onShow: function(e) {
+    
   },
   edit: function(e){
       var postId = e.target.dataset.postId
@@ -112,84 +122,54 @@ Page({
 
   },
 
-  up: function( e ){
-      //event.target.dataset.id 
-    var that = this
-    var index = e.target.dataset.index
-    var postId = e.target.dataset.postId
-    var dreams = that.data.dreams
-    if(dreams[index].up_src === "up_button_blue"){
-      dreams[index].up_src = "up_button"
-    }else{
-      dreams[index].up_src = "up_button_blue"
-    }
-     
-    this.setData( {
+  up: function (e) {
+    //event.target.dataset.id 
+
+    let userId = app.globalData.userId
+    let { index, postId } = e.target.dataset
+    let dreams = this.data.dreams
+
+    dreams[index].up_src === "up_button_blue" ? dreams[index].up_src = "up_button" : dreams[index].up_src = "up_button_blue"
+
+    this.setData({
       dreams: dreams
     })
-    let userId = app.globalData.userId
-    console.log("user_id2: " + userId)
-    var fav = {
+    let fav = {
       favorite: {
         user_id: userId,
         post_id: postId
       }
     }
     //网络请求
-    wx.request( {
+    wx.request({
       url: 'https://api.dreamreality.cn/favorites/up',
       header: {
         "Content-Type": "application/json"
       },
       method: "POST",
       data: JSON.stringify(fav),
-      success: function( res ) {
+      success: (res) => {
         //获取到了数据
-        console.log("success")
+        // console.log(JSON.stringify(res))
         var favorite = res.data.data;
         dreams[index].count = favorite.count
-        that.setData( {
+        this.setData({
           dreams: dreams
         })
-        
+
       },
-      fail: function(error){
-          console.log(error)
+      fail: function (error) {
+        console.log(error)
       }
     });
 
   },
-  refresh: function() {
-    // 下拉刷新，重新加载数据； 
-    // TODO，不重新加载，只更新对应列表；
-    console.log("pull");
-    this.setData( {
-          loading: false
-    })
-    
-    this.onLoad()
+  refresh: function () {
+    this.fetch("refresh")
   },
-  onPullDownRefresh: function() {
-    // Do something when pull down.
-     console.log('刷新')
-     this.setData( {
-          loading: false
-    })
-    this.onLoad()
-    wx.stopPullDownRefresh();
- },
-  formSubmit: function(e) {
-    var d = e.detail.value
-    var id = d.id 
-    var img = d.image
-    //this.animation.scale(2, 2).step()
-    //this.animation.scale(0.5,0.5).step()
-    //this.setData({
-    //  animationData: this.animation.export()
-    //})
-    this.setData({up: "up_button_blue.png"})
-    console.log("id info ......." + id)
-    console.log("img info ......." + img)
-    
-  }
+  loadMore: function () {
+
+    this.fetch("more")
+
+  },
 })

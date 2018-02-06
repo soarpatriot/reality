@@ -1,4 +1,3 @@
-import { userFromDb } from '../../utils/user.js'
 import { request } from '../../utils/util.js'
 let app = getApp()
 
