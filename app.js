@@ -41,9 +41,8 @@ App({
     function req(res){
       
         //console.log("login:" + JSON.stringify(res))
-        let openIdUrl = "https://api.weixin.qq.com/sns/jscode2session?" +
-          "appid=wx6ffc32b44af2c5a2&secret=78f22318240a013884282b9e309e3c41&js_code="
-          + res.code + "&grant_type=authorization_code"
+        let openIdUrl = `https://api.dreamreality.cn/wechat/openid?js_code=${res.code}` 
+         
         return request({
           url: openIdUrl,
           header: {
