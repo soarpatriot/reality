@@ -1,6 +1,7 @@
 //app.js
 import {userInfo, login, request} from './utils/user.js'
 import Promise from './utils/bluebird.js';
+import {backServer} from './utils/config.js';
 App({
   onLaunch: function () {
     //调用API从本地缓存中获取数据
@@ -8,11 +9,15 @@ App({
     //logs.unshift(Date.now())
     //wx.setStorageSync('logs', logs)
     //getUserInfo()
+    this.globalData.API_HOST = backServer()
+    //console.log(this.globalData.API_HOST)
   },
   globalData: {
-    
+    //host: backServer()
   },
   getUserInfo: function(){
+    let host = this.globalData.API_HOST
+    console.log(`host: ${host}`)
     let user, sess, cusUser
     let uu = userInfo().then((res)=>{
       user = res
@@ -39,10 +44,10 @@ App({
       console.log("info get error")
     })
     function req(res){
-      
+      //console.log(this.globalData.host)
         //console.log("login:" + JSON.stringify(res))
-        let openIdUrl = `https://api.dreamreality.cn/wechat/openid?js_code=${res.code}` 
-         
+      let openIdUrl = `${host}/wechat/openid?js_code=${res.code}` 
+     
         return request({
           url: openIdUrl,
           header: {

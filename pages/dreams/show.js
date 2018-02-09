@@ -3,7 +3,7 @@ var app = getApp()
 
 Page({
   data:{
-    
+    host: app.globalData.API_HOST,
     content:'',
     dream: { up_src: "up_button"}
   },
@@ -59,7 +59,7 @@ Page({
     }
     //网络请求
     wx.request({
-      url: 'https://api.dreamreality.cn/favorites/up',
+      url: `${this.data.host}/favorites/up`,
       header: {
         "Content-Type": "application/json"
       },
@@ -85,7 +85,7 @@ Page({
       var that = this;
       //网络请求
       wx.request( {
-        url: 'https://api.dreamreality.cn/comments',
+        url: `${this.data.host}/comments`,
         header: {
           "Content-Type": "application/json"
         },
@@ -131,7 +131,7 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
     let userId = app.globalData.userId
     //网络请求
-    let oneUrl = `https://api.dreamreality.cn/posts/${postId}?user_id=${userId}`
+    let oneUrl = `${this.data.host}/posts/${postId}?user_id=${userId}`
     wx.request( {
       url: oneUrl,
       header: {

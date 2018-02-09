@@ -23,6 +23,7 @@ Page({
     }
   },
   data: {
+    host: app.globalData.API_HOST,
     pagination: {
        
     },
@@ -42,13 +43,13 @@ Page({
     this.fetch("refresh")
   },
   fetch: function(direction){
-  
+    
     let userId = app.globalData.userId
     let page = this.data.pagination.page_number || 1
 
     direction === "more" ? page++ : page = 1
 
-    let postsUrl = `https://api.dreamreality.cn/posts?page_size=10&page=${page}`
+    let postsUrl = `${this.data.host}/posts?page_size=10&page=${page}`
     if (userId){
       postsUrl = `${postsUrl}&user_id=${userId}`
     }
@@ -100,7 +101,7 @@ Page({
     this.animation.scale(2, 2).step()
     this.animation.scale(1, 1).step()
 
-
+    
     let userId = app.globalData.userId
     let {index, postId } = e.target.dataset
     let dreams = this.data.dreams
@@ -126,7 +127,7 @@ Page({
     }
     //网络请求
     wx.request( {
-      url: 'https://api.dreamreality.cn/favorites/up',
+      url: `${this.data.host}/favorites/up`,
       header: {
         "Content-Type": "application/json"
       },

@@ -4,6 +4,7 @@ let app = getApp()
 
 Page({
   data: {
+    host: app.globalData.API_HOST,
     pagination: {
 
     },
@@ -33,13 +34,13 @@ Page({
     this.fetch("refresh")
   },
   fetch: function (direction) {
-
+    let host = app.globalData.API_HOST
     let userId = app.globalData.userId
     let page = this.data.pagination.page_number || 1
 
     direction === "more" ? page++ : page = 1
 
-    let postsUrl = `https://api.dreamreality.cn/posts?page_size=10&page=${page}`
+    let postsUrl = `${host}/posts/my?user_id=${userId}&page_size=10&page=${page}`
     if (userId) {
       postsUrl = `${postsUrl}&user_id=${userId}`
     }
@@ -94,11 +95,11 @@ Page({
     wx.showModal({
       title: '删除',
       content: '确定删除这个梦想？',
-      success: function(res) {
+      success: (res) => {
         if (res.confirm) {
           console.log('用户点击确定')
           wx.request( {
-            url: 'https://api.dreamreality.cn/posts/'+postId,
+            url: `${this.data.host}/posts/${postId}`,
             header: {
               "Content-Type": "application/json"
             },
@@ -142,7 +143,7 @@ Page({
     }
     //网络请求
     wx.request({
-      url: 'https://api.dreamreality.cn/favorites/up',
+      url: `${this.data.host}/favorites/up`,
       header: {
         "Content-Type": "application/json"
       },

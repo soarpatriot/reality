@@ -1,7 +1,10 @@
 // pages/my/index.js
 var app = getApp()
 Page({
-  data:{},
+  data:{
+    host: app.globalData.API_HOST
+   
+  },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     var that = this
@@ -10,7 +13,7 @@ Page({
     //网络请求
     
     let userId = app.globalData.userId
-    var oneUrl = "https://api.dreamreality.cn/users/"+userId
+    var oneUrl = `${this.data.host}/users/${userId}`
     wx.request( {
       url: oneUrl,
       header: {

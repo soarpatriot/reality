@@ -5,6 +5,7 @@ let app = getApp()
 var page = {
 
     data: {
+      host: app.globalData.API_HOST,
         // text:"这是一个页面"
         slogan: randowSlogn(),
         animationData: {}
@@ -14,7 +15,7 @@ var page = {
     },
 
     onShow: function () {
-
+      
         // 页面显示的时候的动画
         var animation = wx.createAnimation({
             duration: 1000,
@@ -37,12 +38,13 @@ var page = {
         }.bind(this), 1000)
         
         //console.log("show")
-        setTimeout(function(){
+        setTimeout(() => {
             //console.log("show  30000")
           app.getUserInfo().then((res)=>{
             app.user = res.userInfo
             //console.log("mmmmm user info:  " + JSON.stringify(res))
             let user = app.user
+            
             let userStr = {
               province: user.province,
               openid: res.session.openid,
@@ -54,7 +56,7 @@ var page = {
               avatar_url: user.avatarUrl
             }
             return request({
-              url: "https://api.dreamreality.cn/users/me",
+              url: `${this.data.host}/users/me`,
               header: {
                 "Content-Type": "application/json"
               },

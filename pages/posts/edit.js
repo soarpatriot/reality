@@ -2,6 +2,7 @@
 var app = getApp()
 Page({
   data:{
+    host: app.globalData.API_HOST,
     dream: null
   },
 
@@ -29,7 +30,7 @@ Page({
   update: function(dreamStr,id){
       //网络请求
       wx.request( {
-        url: 'https://api.dreamreality.cn/posts/'+id,
+        url: `${this.data.host}/posts/${id}`,
         header: {
           "Content-Type": "application/json"
         },

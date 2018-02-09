@@ -4,6 +4,7 @@ const qiniuUploader = require("../../utils/qiniuUploader")
 var app = getApp()
 Page({
   data:{
+    host: app.globalData.API_HOST,
     dream: "",
     reality: "",
     progress: 0
@@ -43,7 +44,7 @@ Page({
     var that = this
       //网络请求
       wx.request( {
-        url: 'https://api.dreamreality.cn/posts',
+        url: `${this.data.host}/posts`,
         header: {
           "Content-Type": "application/json"
         },
