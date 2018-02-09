@@ -21,8 +21,12 @@
                 <view class="nav-view">
                     <navigator class="dream" url="show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
                 </view>
+                <view class="progress-view">
+                    <text>Progress: </text>
+                                <progress stroke-width="4" active="true" class="progress" percent="{{item.progress}}"  />
+                    <text>{{item.progress}}%</text>
+                </view>
 
-                
                 <view class="up-area">
 
                     <view class="thumb-up">

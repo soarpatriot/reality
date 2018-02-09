@@ -20,6 +20,11 @@
                 <view class="nav-view">
                      {{dream.dream}}
                 </view>
+                <view class="progress-view">
+                    <text>Progress: </text>
+                                <progress stroke-width="4" active="true" class="progress" percent="{{dream.progress}}"  />
+                    <text>{{dream.progress}}%</text>
+                </view>
                 <view class="up-area">
 
                     <view class="thumb-up">
