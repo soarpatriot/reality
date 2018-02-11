@@ -1,5 +1,6 @@
 // pages/dreams/show.js
 var app = getApp()
+import { previewImage } from '../templates/_post_images.js'
 
 Page({
   data:{
@@ -156,5 +157,6 @@ Page({
           console.log(error)
       }
     });
-  }
+  },
+  previewImage: previewImage
 })

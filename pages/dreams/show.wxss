@@ -1,3 +1,4 @@
+@import "../templates/_post_images.wxss";
 /* pages/dreams/show.wxss */
 .progress-view{
   font-size: 12px;

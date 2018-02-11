@@ -7,9 +7,17 @@ Page({
     host: app.globalData.API_HOST,
     dream: "",
     reality: "",
+    images: [],
     progress: 0
   },
-
+  delete: function(e) {
+    let { index } = e.target.dataset
+    console.log(index)
+    this.data.images.splice(index, 1)
+    this.setData({
+      images: this.data.images
+    })
+  },
   formSubmit: function(e) {
     var d = e.detail.value
     d.progress = d.progress || 0 
@@ -23,15 +31,19 @@ Page({
       })
     }else{
 
+      console.log(`data dream: ${JSON.stringify(this.data.images)}`)
+      const transedImages = this.data.images.map((im) => { im.url = im.imageURL; return im})
+      console.log(`transedImages dream: ${JSON.stringify(transedImages)}`)
       var dream = {
         dream: d.dream,
         //reality: d.reality,
-        //progress: d.progress,
-        user_id: user.id
+        progress: 0,
+        user_id: user.id,
+        images: transedImages
       }
       
       var dreamStr = JSON.stringify(dream)
-      console.log(dreamStr)
+      console.log(`dream: ${dreamStr}`)
       this.post(dreamStr)
 
     }
@@ -100,32 +112,43 @@ Page({
     var that = this;
     // 选择图片
     wx.chooseImage({
-      count: 9,
+      count: 4,
       success: function (res) {
-        var filePath = res.tempFilePaths[0];
+        
+        let fileLength = res.tempFilePaths.length
+        if (that.data.images.length + fileLength > 4){
+          wx.showToast({
+            title: '最多只能选择4张图片',
+            duration: 2000
+          }) 
+        }else{
+          for (let i = 0; i < fileLength; i++){
+            qiniuUploader.upload(res.tempFilePaths[i], (res) => {
+
+              console.log(JSON.stringify(res))
+              let image = {
+                hash: res.hash,
+                key: res.key,
+                imageURL: res.imageURL
+              }
+
+              let images = that.data.images.concat(res)
+              that.setData({
+                'images': images,
+              });
+            }, (error) => {
+              console.log('error: ' + error);
+            }, {
+                region: 'NCN',
+                domain: 'https://static.dreamreality.cn',
+                uptokenURL: `${that.data.host}/tokens/qiniu`
+                // uptokenFunc: function () { return '[yourTokenString]'; }
+            })
+          }
+
+        }
         // 交给七牛上传
-        qiniuUploader.upload(filePath, (res) => {
-          // 每个文件上传成功后,处理相关的事情
-          // 其中 info 是文件上传成功后，服务端返回的json，形式如
-          // {
-          //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
-          //    "key": "gogopher.jpg"
-          //  }
-          // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
-          that.setData({
-            'imageURL': res.imageURL,
-          });
-        }, (error) => {
-          console.log('error: ' + error);
-        }, {
-            region: 'NCN',
-            domain: 'bzkdlkaf.bkt.clouddn.com', // // bucket 域名，下载资源时用到。如果设置，会在 success callback 的 res 参数加上可以直接使用的 ImageURL 字段。否则需要自己拼接
-            // key: 'customFileName.jpg', // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
-            // 以下方法三选一即可，优先级为：uptoken > uptokenURL > uptokenFunc
-            uptoken: '[yourTokenString]', // 由其他程序生成七牛 uptoken
-            uptokenURL: 'UpTokenURL.com/uptoken', 
-            uptokenFunc: function () { return '[yourTokenString]'; }
-          })
+
       }
 
     })

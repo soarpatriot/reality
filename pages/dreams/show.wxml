@@ -1,3 +1,4 @@
+<import src="../templates/_post_images.wxml" />
 <view class="container main-container">
     <view id="index" class="one-dream">
           <view class="content-area">
@@ -24,6 +25,10 @@
                     <text>Progress: </text>
                                 <progress stroke-width="4" active="true" class="progress" percent="{{dream.progress}}"  />
                     <text>{{dream.progress}}%</text>
+                </view>
+                                <view>
+                                <template
+is="postImages" data="{{images: dream.images}}" /> 
                 </view>
                 <view class="up-area">
 
