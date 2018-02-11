@@ -1,6 +1,6 @@
 <template name="image"> 
  
-    <image mode="aspectFit" style="width:100%;" bindtap="previewImage"  src="{{image.url}}" data-src="{{image.url}}"  data-group="{{images}}" mode='widthFix'>
+    <image  style="width:100%;" bindtap="previewImage"  src="{{image.url+'?imageView2/1/w/128/h/128/q/75|imageslim'}}" data-src="{{image.url}}"  data-group="{{images}}" mode='widthFix'>
     </image>
 
 </template>

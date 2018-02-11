@@ -1,9 +1,11 @@
+<import src="./_image.wxml" />
 <template name="postImages"> 
    <view class="images">
        <block wx:for-items="{{images}}" wx:for-item="image" wx:key="{{index}}">
         <view class="image-view">
-          <image mode="aspectFit" style="width:100%;" bindtap="previewImage"  src="{{image.url}}" data-src="{{image.url}}"  data-group="{{images}}" mode='widthFix'>
-          </image>
+           <template
+is="image" data="{{image:image, images: images}}" /> 
+                
         </view>
 
        </block>
