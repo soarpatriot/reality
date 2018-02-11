@@ -113,13 +113,13 @@ Page({
     var that = this;
     // 选择图片
     wx.chooseImage({
-      count: 4,
+      count: 8,
       success: function (res) {
         
         let fileLength = res.tempFilePaths.length
-        if (that.data.images.length + fileLength > 4){
+        if (that.data.images.length + fileLength > 8){
           wx.showToast({
-            title: '最多只能选择4张图片',
+            title: '最多只能选择8张图片',
             duration: 2000
           }) 
         }else{
