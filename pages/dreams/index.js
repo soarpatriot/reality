@@ -108,6 +108,8 @@ Page({
     let {index, postId } = e.target.dataset
     let dreams = this.data.dreams
     let an = {}
+
+    console.log(JSON.stringify(dreams))
     //const name = `animationData_${index}`
     //console.log(name)
     //an[name] = this.animation.export()

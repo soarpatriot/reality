@@ -1,54 +1,6 @@
-<import src="../templates/_post_images.wxml" />
+<import src="../templates/_post.wxml" />
 <view class="container main-container">
-    <view id="index" class="one-dream">
-          <view class="content-area">
-            <view class="avatar-view">
-                <image class="avatar" mode="scaleToFill" src="{{dream.avatar_url}}"></image>
-            </view>
-            <view class='pub'>
-              <view class="nickname">
-                  {{dream.nickname}}
-              </view>
-              <view class="ago">
-                {{dream.published_at}}
-              </view>
-            </view>
-
-          </view>
-            
-            <view class="one-dream-content">
-
-                <view class="nav-view">
-                     {{dream.dream}}
-                </view>
-                <view class="progress-view">
-                    <text>Progress: </text>
-                                <progress stroke-width="4" active="true" class="progress" percent="{{dream.progress}}"  />
-                    <text>{{dream.progress}}%</text>
-                </view>
-                                <view>
-                                <template
-is="postImages" data="{{images: dream.images}}" /> 
-                </view>
-                <view class="up-area">
-
-                    <view class="thumb-up">
-                      <image animation="{{animationData}}" 
-                        data-post-id="{{dream.id}}"
-                        
-                        bindtap="up"
-                        class="up-image" 
-                        src="../../images/{{dream.up_src}}.png"
-                        background-size="cover"></image>
-                      <text class="favorite">{{dream.count}}</text>
-                    </view>
-  
-                </view> 
-            
-            </view>
-          
-
-      </view>  
+    <template is="post" data="{{item: dream, index: 1}}" />  
 
     <view class="comments">
      <block wx:for-items="{{dream.comments}}" wx:for-item="item" wx:key="{{index}}">

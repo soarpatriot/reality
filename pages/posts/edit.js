@@ -1,4 +1,5 @@
 // pages/posts/posts.js
+import { previewImage } from '../templates/_post_images.js'
 var app = getApp()
 Page({
   data:{
@@ -56,7 +57,7 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
     let userId = app.globalData.userId
     //网络请求
-    var oneUrl = `https://api.dreamreality.cn/posts/${options.id}?user_id=${userId}`
+    var oneUrl = `${this.data.host}/posts/${options.id}?user_id=${userId}`
     wx.request( {
       url: oneUrl,
       header: {
@@ -90,7 +91,7 @@ Page({
   },
   onUnload:function(){
     // 页面关闭
-  }
-
+  },
+  previewImage: previewImage
 
 })

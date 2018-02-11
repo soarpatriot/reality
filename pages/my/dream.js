@@ -1,4 +1,5 @@
 import { request } from '../../utils/util.js'
+import { previewImage } from '../templates/_post_images.js'
 
 let app = getApp()
 
@@ -173,4 +174,5 @@ Page({
     this.fetch("more")
 
   },
+  previewImage: previewImage
 })

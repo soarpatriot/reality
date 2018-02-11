@@ -1,58 +1,9 @@
-<import src="../templates/_post_images.wxml" />
+<import src="../templates/_post.wxml" />
 
 <view class='container'> 
     <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="{{index}}">
-      <view id="{{index}}" class="one-dream">
-          <view class="content-area">
-            <view class="avatar-view">
-                <image class="avatar" mode="scaleToFill" src="{{item.avatar_url}}"></image>
-            </view>
-            <view class='pub'>
-              <view class="nickname">
-                  {{item.nickname}}
-              </view>
-              <view class="ago">
-                {{item.published_at}}
-              </view>
-            </view>
-
-          </view>
-            
-            <view class="one-dream-content">
-
-                <view class="nav-view">
-                    <navigator class="dream" url="show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
-                </view>
-                <view class="progress-view">
-                    <text>Progress: </text>
-                                <progress stroke-width="4" active="true" class="progress" percent="{{item.progress}}"  />
-                    <text>{{item.progress}}%</text>
-                </view>
-                <view>
-                                <template
-is="postImages" data="{{images: item.images}}" /> 
-                </view>
-
-                <view class="up-area">
-
-                    <view class="thumb-up">
-                      <image animation="{{'animationData' + index}}" 
-                        data-post-id="{{item.id}}"
-                        data-index="{{index}}"
-                        bindtap="up"
-                        class="up-image" 
-                        src="../../images/{{item.up_src}}.png"
-                        background-size="cover"></image>
-                      <text class="favorite">{{item.count}}</text>
-                    </view>
-  
-                </view> 
-            
-            </view>
+      <template is="post" data="{{item: item, index: index}}" /> 
           
-
-      </view>
-
     </block>
 </view>
 

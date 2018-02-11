@@ -1,12 +1,16 @@
 /* pages/posts/posts.wxss */
+@import "../templates/_post_images.wxss";
 .section {
     margin-top: 20rpx;
 }
 .image-wraper{
   position: relative;
+  width: 25%;
+  box-sizing: border-box;
+  padding: 0 20rpx;
 }
 .images-view{
-  
+  width: 100%;
   margin: 40rpx -20rpx;
   display: flex;
   direction: row;

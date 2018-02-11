@@ -1,6 +1,6 @@
 // pages/posts/posts.js
 const qiniuUploader = require("../../utils/qiniuUploader")
-
+import { previewImage } from '../templates/_post_images.js'
 var app = getApp()
 Page({
   data:{
@@ -31,15 +31,15 @@ Page({
       })
     }else{
 
-      console.log(`data dream: ${JSON.stringify(this.data.images)}`)
-      const transedImages = this.data.images.map((im) => { im.url = im.imageURL; return im})
-      console.log(`transedImages dream: ${JSON.stringify(transedImages)}`)
+      //console.log(`data dream: ${JSON.stringify(this.data.images)}`)
+      //const transedImages = this.data.images.map((im) => { im.url = im.imageURL; return im})
+      //console.log(`transedImages dream: ${JSON.stringify(transedImages)}`)
       var dream = {
         dream: d.dream,
         //reality: d.reality,
         progress: 0,
         user_id: user.id,
-        images: transedImages
+        images: this.data.images
       }
       
       var dreamStr = JSON.stringify(dream)
@@ -108,6 +108,7 @@ Page({
   onUnload:function(){
     // 页面关闭
   },
+  previewImage: previewImage,
   didPressChooseImage: function () {
     var that = this;
     // 选择图片
@@ -129,10 +130,10 @@ Page({
               let image = {
                 hash: res.hash,
                 key: res.key,
-                imageURL: res.imageURL
+                url: res.imageURL
               }
 
-              let images = that.data.images.concat(res)
+              let images = that.data.images.concat(image)
               that.setData({
                 'images': images,
               });

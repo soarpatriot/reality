@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<import src="../templates/_post_images.wxml" />
 <view class="container">
     <form bindsubmit="formSubmit" class="dream-form" bindreset="formReset">
         <view class="dream-id-section">
@@ -11,6 +12,8 @@
             </text>
             
         </view>
+        <template
+is="postImages" data="{{images: dream.images}}" />
         <view class="section">
             <view class="section__title">进度</view>
             <slider class="slider" name="progress" value="{{dream.progress}}" min="0" max="100" show-value ></slider>

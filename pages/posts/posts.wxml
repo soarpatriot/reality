@@ -1,4 +1,4 @@
-
+<import src="../templates/_image.wxml" />
 
 <view class="container">
     <form bindsubmit="formSubmit" bindreset="formReset">
@@ -7,42 +7,33 @@
             <textarea name="dream" class="write-area"  auto-focus maxlength="400" value="{{dream}}" placeholder="我的梦想" >
            
             </textarea>
+            <view class="choosen-image">
+              <image 
+                
+                bindtap="didPressChooseImage"
+                class="add-image" 
+                src="../../images/add.svg"
+                background-size="cover"></image>
+              <text class="favorite">{{item.count}}</text>
+            </view>
+
             <view class="images-view">
               
               <block wx:for-items="{{images}}" wx:for-item="item" wx:key="{{index}}">
-              <view class="image-wraper">
-                 <image 
-                        data-index="{{index}}"
-                        bindtap="delete"
-                 class="delete-image" src="../../images/delete.svg"></image>
-                 <image class="uploaded-image" src="{{item.imageURL}}"></image>
-              </view>
+                <view class="image-wraper">
+                  <image 
+                          data-index="{{index}}"
+                          bindtap="delete"
+                  class="delete-image" src="../../images/delete.svg"></image>
+                  
+                   <template is="image" data="{{image: item, images: images}}" />
+                  
+
+                </view>
               </block>
             </view>
-            </view>
-                    <view class="choosen-image">
-                      <image 
-                        
-                        bindtap="didPressChooseImage"
-                        class="add-image" 
-                        src="../../images/add.svg"
-                        background-size="cover"></image>
-                      <text class="favorite">{{item.count}}</text>
-                    </view>
-        <!-- 
-                <view class="section">
-            <view class="section__title">现实：</view>
-            <textarea name="reality" class="write-area" auto-height maxlength="250" value="{{reality}}" placeholder="可爱的现实">
-            
-            </textarea>
         </view>
-                <view class="section section_gap">
-            <view class="section__title">完成(可以更改)</view>
-            <slider name="progress" value="0" show-value ></slider>
-        </view>
-        -->
-
-
+        
 
 
         <view class="btn-area">

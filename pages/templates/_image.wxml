@@ -1,0 +1,6 @@
+<template name="image"> 
+ 
+    <image mode="aspectFit" style="width:100%;" bindtap="previewImage"  src="{{image.url}}" data-src="{{image.url}}"  data-group="{{images}}" mode='widthFix'>
+    </image>
+
+</template>
