@@ -4,6 +4,15 @@
 .dream-id-section{
     display: none;
 }
+.progress{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title{
+  flex: 2;
+  color: #767676;
+}
 .section {
     margin-bottom:20px;
     width: 100%;
@@ -13,15 +22,13 @@
     justify-content: center;
 }
 .slider{
-  width: 100%;
+  flex: 10;
   margin: 40rpx 0;
   padding: 0 40rpx;
   box-sizing:border-box;
 
 }
-slider{
-  
-}
+
 .publish-btn{
     width: 50%;
     font-size: 14px;

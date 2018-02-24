@@ -14,8 +14,8 @@
         </view>
         <template
 is="postImages" data="{{images: dream.images}}" />
-        <view class="section">
-            <view class="section__title">进度</view>
+        <view class="progress">
+            <view class="title">Progress:</view>
             <slider class="slider" name="progress" value="{{dream.progress}}" min="0" max="100" show-value ></slider>
             
         </view>
