@@ -38,15 +38,11 @@ Page({
         method: "PUT",
         data: dreamStr,
         success: function( res ) {
-          console.log("data:" + JSON.stringify(res.data.data))
+          // console.log("data:" + JSON.stringify(res.data.data))
           wx.showToast({
             title: '记得坚持下去！',
             icon: 'success',
-            complete: () => {
-              wx.redirectTo({
-                url: '../my/dream'
-              })
-            },
+            
             duration: 2000
           })
 

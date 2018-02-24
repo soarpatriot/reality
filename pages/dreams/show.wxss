@@ -79,9 +79,10 @@ button::after{
   height: 32px;
 }
 .comments{
-   margin-bottom: 120rpx;
+   
    
    padding: 30rpx 30rpx;
+   padding-bottom: 120rpx;
    background-color: #fff;
    font-size: 12px;
    width: 100%;

@@ -1,8 +1,5 @@
 
-const HOST = "https://test.dreamreality.cn"
+const HOST = "https://api.dreamreality.cn"
 
-let backServer = () =>{
-  return HOST
-}
 
-export {backServer}
+export { HOST}

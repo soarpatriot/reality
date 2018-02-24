@@ -1,12 +1,12 @@
 
 import { wxPromisify, request} from './util.js'
-
+import { HOST } from './config.js';
 let login = wxPromisify(wx.login)
 
 let userInfo = wxPromisify(wx.getUserInfo)
 let userFromDb = (id) => {
   return request({
-    url: `https://api.dreamreality.cn/users/${id}`,
+    url: `${HOST}/users/${id}`,
     header: {
       "Content-Type": "application/json"
     },

@@ -86,7 +86,7 @@ Page({
   edit: function(e){
       var postId = e.target.dataset.postId
       wx.navigateTo({
-            'open-type': 'redirect',
+            
             url: '../posts/edit?id='+postId
       })
   },

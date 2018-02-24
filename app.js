@@ -1,7 +1,7 @@
 //app.js
 import {userInfo, login, request} from './utils/user.js'
 import Promise from './utils/bluebird.js';
-import {backServer} from './utils/config.js';
+import {HOST} from './utils/config.js';
 App({
   onLaunch: function () {
     //调用API从本地缓存中获取数据
@@ -9,7 +9,7 @@ App({
     //logs.unshift(Date.now())
     //wx.setStorageSync('logs', logs)
     //getUserInfo()
-    this.globalData.API_HOST = backServer()
+    this.globalData.API_HOST = HOST
     //console.log(this.globalData.API_HOST)
   },
   globalData: {
