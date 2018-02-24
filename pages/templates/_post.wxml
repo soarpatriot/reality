@@ -31,7 +31,10 @@
 is="postImages" data="{{images: item.images}}" /> 
                 </view>
 
-                <view class="up-area">
+                
+            </view>
+          
+            <view class="up-area">
 
                     <view class="thumb-up">
                       <image animation="{{'animationData' + index}}" 
@@ -44,10 +47,7 @@ is="postImages" data="{{images: item.images}}" />
                       <text class="favorite">{{item.count}}</text>
                     </view>
   
-                </view> 
+            </view> 
             
-            </view>
-          
-
       </view>
 </template>      

@@ -20,13 +20,15 @@
 .one-dream{
     display: flex;
     flex-direction: column;
-    padding: 20rpx 0;
-    border-bottom:  solid 2rpx #eee;
+    margin-bottom: 20rpx;
+    padding-top: 10rpx;
+    background-color:#fff;
     width: 100%;
 }
 .content-area{
     flex-direction: row;
     display: flex;
+    padding: 20rpx 30rpx;
     padding-bottom: 0;
 }
 
@@ -38,6 +40,7 @@
     color: #666;
     font-size: 14px;
     display: flex;
+    padding: 20rpx 30rpx;
     flex-direction: column;
 }
 .nav-view{
@@ -66,7 +69,8 @@
     color: #888;
     padding: 10rpx 0;
     display: flex;
-    
+    border-top:  solid 2rpx #eee;
+    border-bottom:  solid 2rpx #eee;
     align-items: center;
     justify-content: space-between;
    
@@ -91,6 +95,7 @@
     
     display: flex;
     justify-content: flex-end;
+    padding: 20rpx 30rpx;
     align-items: center;
 }
 button::after{

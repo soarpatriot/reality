@@ -40,8 +40,13 @@ Page({
         success: function( res ) {
           console.log("data:" + JSON.stringify(res.data.data))
           wx.showToast({
-            title: '记得要坚持下去啊！',
+            title: '记得坚持下去！',
             icon: 'success',
+            complete: () => {
+              wx.redirectTo({
+                url: '../my/dream'
+              })
+            },
             duration: 2000
           })
 

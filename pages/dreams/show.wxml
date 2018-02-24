@@ -1,5 +1,5 @@
 <import src="../templates/_post.wxml" />
-<view class="container main-container">
+<view class="full-container main-container">
     <template is="post" data="{{item: dream, index: 1}}" />  
 
     <view class="comments">

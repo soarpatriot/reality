@@ -1,24 +1,29 @@
 <import src="../templates/_post.wxml" />
-<view class='container'> 
+<view class='full-container'> 
     <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="{{index}}">
       <template is="post" data="{{item: item, index: index}}" /> 
             
       <view class='operation'>
-          <image animation="{{animationData}}" 
+        <view>
+                  <image animation="{{animationData}}" 
               data-post-id="{{item.id}}"
             data-index="{{index}}"
               bindtap="delete"
             class="up-image" 
             src="../../images/delete.png"
-              background-size="cover"></image>     
-                      
-          <image animation="{{animationData}}" 
+              background-size="cover"></image>    
+        </view>
+        <view>
+                  <image animation="{{animationData}}" 
                     data-post-id="{{item.id}}"
                     data-index="{{index}}"
                     bindtap="edit"
                     class="up-image" 
                     src="../../images/edit-black.png"
                      background-size="cover"></image>
+        </view>
+                      
+
 
       </view>
     </block>

@@ -1,6 +1,6 @@
 <import src="../templates/_post.wxml" />
 
-<view class='container'> 
+<view class='full-container'> 
     <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="{{index}}">
       <template is="post" data="{{item: item, index: index}}" /> 
           
