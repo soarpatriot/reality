@@ -1,5 +1,4 @@
 // pages/posts/posts.js
-import { previewImage } from '../templates/_post_images.js'
 var app = getApp()
 Page({
   data:{
@@ -92,7 +91,6 @@ Page({
   },
   onUnload:function(){
     // 页面关闭
-  },
-  previewImage: previewImage
+  }
 
 })

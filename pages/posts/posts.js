@@ -1,6 +1,7 @@
 // pages/posts/posts.js
 const qiniuUploader = require("../../utils/qiniuUploader")
 import { previewImage } from '../templates/_post_images.js'
+
 var app = getApp()
 Page({
   data:{

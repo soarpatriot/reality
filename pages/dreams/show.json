@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": "梦想"
+  "navigationBarTitleText": "梦想",
+  "usingComponents": {
+    "comment-tag": "../templates/comment",
+    "post": "../components/post"
+  }
 }

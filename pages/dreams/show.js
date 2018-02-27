@@ -1,7 +1,5 @@
 // pages/dreams/show.js
 var app = getApp()
-import { previewImage } from '../templates/_post_images.js'
-
 Page({
   data:{
     host: app.globalData.API_HOST,
@@ -39,48 +37,6 @@ Page({
     
     //console.log("user info .......")
    
-  },
-  up: function (e) {
-    //event.target.dataset.id 
-    
-    let userId = app.globalData.userId
-    let postId = e.target.dataset.postId
-    let dream = this.data.dream
-    if (dream.up_src === "up_button_blue") {
-      dream.up_src = "up_button"
-    } else {
-      dream.up_src = "up_button_blue"
-    }
-
-    let fav = {
-      favorite: {
-        user_id: userId,
-        post_id: postId
-      }
-    }
-    //网络请求
-    wx.request({
-      url: `${this.data.host}/favorites/up`,
-      header: {
-        "Content-Type": "application/json"
-      },
-      method: "POST",
-      data: JSON.stringify(fav),
-      success: (res)=> {
-        //获取到了数据
-        console.log("success")
-        let favorite = res.data.data;
-        dream.count = favorite.count
-        this.setData({
-          dream: dream
-        })
-
-      },
-      fail: function (error) {
-        console.log(error)
-      }
-    });
-
   },
   comment: function(commentStr, postId){
       var that = this;
@@ -157,6 +113,5 @@ Page({
           console.log(error)
       }
     });
-  },
-  previewImage: previewImage
+  }
 })

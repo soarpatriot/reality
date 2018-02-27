@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "坚持"
+    "navigationBarTitleText": "坚持",
+        "usingComponents": {
+          "preview-image": "/pages/components/preview-image"
+        }
 }

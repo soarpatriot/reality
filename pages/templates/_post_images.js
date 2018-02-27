@@ -1,4 +1,6 @@
 
+
+
 let  imageLoad = (e) => {
     var maxSize = 64;
     var imgWidth = e.detail.width;

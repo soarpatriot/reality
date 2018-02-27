@@ -1,7 +1,7 @@
-<import src="../templates/_post.wxml" />
+
 <view class='full-container'> 
     <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="{{index}}">
-      <template is="post" data="{{item: item, index: index}}" /> 
+      <post item="{{item}}" index="{{index}}"/>
             
       <view class='operation'>
         <view>

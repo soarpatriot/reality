@@ -1,5 +1,4 @@
 import { request } from '../../utils/util.js'
-import { previewImage } from '../templates/_post_images.js'
 
 let app = getApp()
 
@@ -192,6 +191,6 @@ Page({
       }
     })
     console.log(`index: ${index}`)
-  },
-  previewImage: previewImage
+  }
+  
 })

@@ -1,5 +1,4 @@
 import { request } from '../../utils/util.js'
-import { previewImage } from '../templates/_post_images.js'
 
 let app = getApp()
 
@@ -123,49 +122,6 @@ Page({
     
 
   },
-
-  up: function (e) {
-    //event.target.dataset.id 
-
-    let userId = app.globalData.userId
-    let { index, postId } = e.target.dataset
-    let dreams = this.data.dreams
-
-    dreams[index].up_src === "up_button_blue" ? dreams[index].up_src = "up_button" : dreams[index].up_src = "up_button_blue"
-
-    this.setData({
-      dreams: dreams
-    })
-    let fav = {
-      favorite: {
-        user_id: userId,
-        post_id: postId
-      }
-    }
-    //网络请求
-    wx.request({
-      url: `${this.data.host}/favorites/up`,
-      header: {
-        "Content-Type": "application/json"
-      },
-      method: "POST",
-      data: JSON.stringify(fav),
-      success: (res) => {
-        //获取到了数据
-        // console.log(JSON.stringify(res))
-        var favorite = res.data.data;
-        dreams[index].count = favorite.count
-        this.setData({
-          dreams: dreams
-        })
-
-      },
-      fail: function (error) {
-        console.log(error)
-      }
-    });
-
-  },
   refresh: function () {
     this.fetch("refresh")
   },
@@ -173,6 +129,6 @@ Page({
 
     this.fetch("more")
 
-  },
-  previewImage: previewImage
+  }
+  
 })

@@ -1,6 +1,6 @@
 /* pages/posts/edit.wxss */
 
-@import "../templates/_post_images.wxss";
+
 .dream-id-section{
     display: none;
 }

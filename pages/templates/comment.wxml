@@ -1,0 +1,7 @@
+<!--pages/templates/_comment.wxml-->
+<view class="comment">
+  <view>
+    adfaadf
+    娃是短发
+  </view>
+</view>
