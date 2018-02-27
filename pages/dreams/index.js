@@ -109,7 +109,7 @@ Page({
     let dreams = this.data.dreams
     let an = {}
 
-    console.log(JSON.stringify(dreams))
+    // console.log(JSON.stringify(dreams))
     //const name = `animationData_${index}`
     //console.log(name)
     //an[name] = this.animation.export()
@@ -173,6 +173,25 @@ Page({
     this.setData({
       animationData: this.animation.export()
     })
+  },
+  commented: function(e) {
+    let userId = app.globalData.userId
+    let { index, postId } = e.target.dataset
+    let dreams = this.data.dreams
+    let an = {}
+
+    wx.showModal({
+      title: '提示',
+      content: '这是一个模态弹窗',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+    console.log(`index: ${index}`)
   },
   previewImage: previewImage
 })

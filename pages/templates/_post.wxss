@@ -111,7 +111,14 @@ button::after{
     font-size: 10px;
     
 }
-
+.comment-number{
+  display: flex;
+  flex-direction: row;
+}
+.trans-send{
+  display: flex;
+  flex-direction: row;
+}
 
 
 /*  加载更多   */
