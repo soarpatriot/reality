@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "创建梦想"
+    "navigationBarTitleText": "创建梦想",
+    "usingComponents": {
+      "p-image": "/pages/components/image"
+    }
 }

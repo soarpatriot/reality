@@ -1,4 +1,3 @@
-<import src="../templates/_image.wxml" />
 
 <view class="container">
     <form bindsubmit="formSubmit" bindreset="formReset">
@@ -25,8 +24,8 @@
                           data-index="{{index}}"
                           bindtap="delete"
                   class="delete-image" src="../../images/delete.svg"></image>
-                  
-                   <template is="image" data="{{image: item, images: images}}" />
+                  <p-image image="{{item}}" images="{{images}}"></p-image> 
+                   
                   
 
                 </view>

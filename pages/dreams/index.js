@@ -3,6 +3,7 @@ import { request } from '../../utils/util.js'
 let app = getApp()
 
 Page({
+  
   onPullDownRefresh: function () {
     console.log("pull")
     wx.showNavigationBarLoading()
@@ -16,13 +17,6 @@ Page({
     })
     this.loadMore()
   },
-  onShareAppMessage: function () {
-    return {
-      title: '自定义分享标题',
-      desc: '自定义分享描述',
-      path: '/page/dreams'
-    }
-  },
   data: {
     host: app.globalData.API_HOST,
     pagination: {
@@ -30,8 +24,8 @@ Page({
     },
     scrollTop : 0,
 
-
-    up: "up_button.png",
+    url: `${app.globalData.API_HOST}/posts`,
+    up: "up_button.svg",
     dreams: [],
     isHideLoadMore: true,
     animationData: {}
@@ -96,62 +90,7 @@ Page({
     })
 
     this.animation = animation
-  },
-  up: function( e ){
-      //event.target.dataset.id 
-    this.animation.scale(2, 2).step()
-    this.animation.scale(1, 1).step()
-
-    
-    let userId = app.globalData.userId
-    let {index, postId } = e.target.dataset
-    let dreams = this.data.dreams
-    let an = {}
-
-    // console.log(JSON.stringify(dreams))
-    //const name = `animationData_${index}`
-    //console.log(name)
-    //an[name] = this.animation.export()
-    this.setData({
-      animationData0: this.animation.export()
-    })
-    // e.target.animation = animationData
-
-    dreams[index].up_src === "up_button_blue" ? dreams[index].up_src = "up_button" : dreams[index].up_src = "up_button_blue"
-
-    this.setData( {
-      dreams: dreams
-    })
-    let fav = {
-      favorite: {
-        user_id: userId,
-        post_id: postId
-      }
-    }
-    //网络请求
-    wx.request( {
-      url: `${this.data.host}/favorites/up`,
-      header: {
-        "Content-Type": "application/json"
-      },
-      method: "POST",
-      data: JSON.stringify(fav),
-      success: ( res ) => {
-        //获取到了数据
-        // console.log(JSON.stringify(res))
-        var favorite = res.data.data;
-        dreams[index].count = favorite.count
-        this.setData( {
-          dreams: dreams
-        })
-        
-      },
-      fail: function(error){
-          console.log(error)
-      }
-    });
-    
-  },
+  },    
   refresh: function() {
     this.fetch("refresh")
   },
@@ -160,12 +99,17 @@ Page({
     this.fetch("more")
 
   },
-  scroll:function(event){
+
+  /**
+   * 
+   *   scroll:function(event){
     //   该方法绑定了页面滚动时的事件，我这里记录了当前的position.y的值,为了请求数据之后把页面定位到这里来。
      this.setData({
          scrollTop : event.detail.scrollTop
      });
   },
+   */
+
   thumbAnimation: function() {
     this.animation.scale(2, 2).step()
     this.animation.scale(1, 1).step()

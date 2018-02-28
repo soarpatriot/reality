@@ -1,13 +1,8 @@
 <!--pages/components/preview-image.wxml-->
-<import src="../templates/_image.wxml" />
-
-   <view class="images">
-       <block wx:for-items="{{images}}" wx:for-item="image" wx:key="{{index}}">
-        <view class="image-view">
-           <template
-is="image" bindtap="previewImage" data="{{image:image, images: images}}" /> 
-                
-        </view>
-
-       </block>
-   </view>
+<view class="images">
+    <block wx:for-items="{{images}}" wx:for-item="image" wx:key="{{index}}">
+      <view class="image-view">
+          <p-image image="{{image}}" images="{{images}}"></p-image>     
+      </view>
+    </block>
+</view>

@@ -1,6 +1,5 @@
 // pages/posts/posts.js
 const qiniuUploader = require("../../utils/qiniuUploader")
-import { previewImage } from '../templates/_post_images.js'
 
 var app = getApp()
 Page({
@@ -109,7 +108,7 @@ Page({
   onUnload:function(){
     // 页面关闭
   },
-  previewImage: previewImage,
+
   didPressChooseImage: function () {
     var that = this;
     // 选择图片
