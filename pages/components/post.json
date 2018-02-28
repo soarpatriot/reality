@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "preview-image": "/pages/components/preview-image"
+    "preview-image": "/pages/components/preview-image",
+    "forward": "/pages/components/forward"
   }
 }

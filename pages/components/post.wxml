@@ -37,17 +37,15 @@
   <view class="up-area">
 
     <view class="thumb-up">
-      <image animation="{{'animationData' + index}}" data-post-id="{{item.id}}" data-index="{{index}}" bindtap="up" class="up-image" src="../../images/{{item.up_src}}.svg" background-size="cover"></image>
+      <image animation="{{animationData}}" data-post-id="{{item.id}}" data-index="{{index}}" bindtap="up" class="up-image" src="../../images/{{item.up_src}}.svg" background-size="cover"></image>
       <text class="favorite">{{item.count}}</text>
     </view>
     <view class="comment-number">
       <image data-post-id="{{item.id}}" data-index="{{index}}" bindtap="commented" class="up-image" src="../../images/comment-o.svg" background-size="cover"></image>
       <text class="favorite">{{item.comments_count}}</text>
     </view>
-    <view class="trans-send">
-      <image data-post-id="{{item.id}}" data-index="{{index}}" bindtap="commented" class="up-image" src="../../images/transend.svg" background-size="cover"></image>
-      <text class="favorite">{{item.comments_count}}</text>
-    </view>
+    
+
   </view>
 
 </view>

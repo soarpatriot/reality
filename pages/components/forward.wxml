@@ -1,0 +1,8 @@
+<!--pages/components/forward.wxml-->
+<view class="forward">
+  <button open-type="share" bindtap='f'>
+      <image open-type="share" data-post-id="{{item.id}}" class="forward-image" src="../../images/transend.svg" background-size="cover"></image>
+  </button>
+
+  <text class="count">{{item.comments_count}}</text>
+</view>

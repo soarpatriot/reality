@@ -28,7 +28,8 @@ Page({
     up: "up_button.svg",
     dreams: [],
     isHideLoadMore: true,
-    animationData: {}
+    animationData: {},
+    sharedUrl: ''
   },
 
   //view加载
@@ -117,24 +118,17 @@ Page({
       animationData: this.animation.export()
     })
   },
-  commented: function(e) {
-    let userId = app.globalData.userId
-    let { index, postId } = e.target.dataset
-    let dreams = this.data.dreams
-    let an = {}
-
-    wx.showModal({
-      title: '提示',
-      content: '这是一个模态弹窗',
+  onShareAppMessage: function () {
+    return {
+      title: '标题',
+      path: `${this.data.sharedUrl}`,
       success: function (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
+        console.log('success')
+      },
+      fail: function (res) {
+        // 转发失败
       }
-    })
-    console.log(`index: ${index}`)
+    }
   }
   
 })

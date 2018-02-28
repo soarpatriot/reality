@@ -14,12 +14,15 @@ Component({
       value: 0,
     }
   },
+  ready: ()=> {
 
+  },
   /**
    * 组件的初始数据
    */
   data: {
-    host: app.globalData.API_HOST
+    host: app.globalData.API_HOST,
+    animationData: null
   },
 
   /**
@@ -68,6 +71,16 @@ Component({
         }
       });
 
+      let animation = wx.createAnimation({
+        duration: 1000,
+        timingFunction: 'ease',
+      })
+
+      animation.scale(1.5, 1.5).step()
+      animation.scale(1, 1).step()
+      this.setData({
+        animationData: animation.export()
+      })
     }
   }
 })
