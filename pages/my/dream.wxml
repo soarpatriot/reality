@@ -5,20 +5,20 @@
             
       <view class='operation'>
         <view>
-                  <image animation="{{animationData}}" 
+                  <image
               data-post-id="{{item.id}}"
             data-index="{{index}}"
               bindtap="delete"
-            class="up-image" 
+            class="opt-image" 
             src="../../images/delete.png"
               background-size="cover"></image>    
         </view>
         <view>
-                  <image animation="{{animationData}}" 
+                  <image
                     data-post-id="{{item.id}}"
                     data-index="{{index}}"
                     bindtap="edit"
-                    class="up-image" 
+                    class="opt-image" 
                     src="../../images/edit-black.png"
                      background-size="cover"></image>
         </view>
