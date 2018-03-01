@@ -1,0 +1,17 @@
+/* pages/components/comment.wxss */
+.comment-number{
+  display: flex;
+  flex-direction: row;
+}
+
+.count{
+    margin-right: 20rpx;
+    display: block;
+    font-size: 10px;
+    
+}
+.comment-image{
+   margin-right: 20rpx;
+   width: 40rpx;
+   height: 40rpx; 
+}

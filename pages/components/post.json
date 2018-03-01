@@ -2,6 +2,7 @@
   "component": true,
   "usingComponents": {
     "preview-image": "/pages/components/preview-image",
-    "forward": "/pages/components/forward"
+    "forward": "/pages/components/forward",
+    "comment": "/pages/components/comment"
   }
 }

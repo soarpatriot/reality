@@ -2,6 +2,7 @@
 var app = getApp()
 Page({
   data:{
+    focus: false,
     host: app.globalData.API_HOST,
     content:'',
     dream: { up_src: "up_button"}
@@ -69,6 +70,11 @@ Page({
   },
   onLoad:function(options){
     var postId = options.id
+    const focus = options.focus || false
+    console.log(focus)
+    this.setData({
+      focus: focus
+    })
     this.load(postId)
   },
   onReady:function(){
@@ -82,6 +88,9 @@ Page({
   },
   onUnload:function(){
     // 页面关闭
+  },
+  focusComment: ()=> {
+
   },
   load: function(postId){
     var that = this
