@@ -1,0 +1,7 @@
+/* pages/components/post-count.wxss */
+.post-count{
+  display: flex;
+  direction: row;
+  color: #888;
+  font-size: 10px;
+}

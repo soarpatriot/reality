@@ -1,0 +1,4 @@
+<!--pages/components/post-count.wxml-->
+<view class='post-count'>
+      赞 {{item.count}} ~ 评论 {{item.comments_count}} ~ 转发 {{item.forward_count}}
+</view>

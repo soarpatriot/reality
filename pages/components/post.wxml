@@ -30,7 +30,9 @@
 
       <preview-image images="{{item.images}}"></preview-image>
     </view>
-
+    <view class="count-ares">
+      <post-count item="{{item}}"></post-count>
+    </view>
 
   </view>
 
@@ -38,13 +40,15 @@
 
     <view class="thumb-up">
       <image animation="{{animationData}}" data-post-id="{{item.id}}" data-index="{{index}}" bindtap="up" class="up-image" src="../../images/{{item.up_src}}.svg" background-size="cover"></image>
-      <text class="favorite">{{item.count}}</text>
+      
     </view>
     
     <block wx:if="{{showCommentBtn}}"> 
         <comment item="{{item}}"></comment>
     </block>
-
+    <block wx:if="{{!showCommentBtn}}">
+       <forward item="{{item}}"></forward>
+    </block>
   </view>
 
 </view>

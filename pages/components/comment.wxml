@@ -1,6 +1,5 @@
 <!--pages/components/comment.wxml-->
 <view class="comment-number">
   <image data-post-id="{{item.id}}" bindtap="commented" class="comment-image" src="../../images/comment-o.svg" background-size="cover"></image>
-  <text class="count">{{item.comments_count}}</text>
 </view>
 

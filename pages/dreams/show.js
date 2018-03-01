@@ -122,5 +122,54 @@ Page({
           console.log(error)
       }
     });
+  },
+  onShareAppMessage: function (res) {
+    let item = this.data.dream
+    console.log(JSON.stringify(item))
+    var that = this;
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '自定义转发标题',
+      path: '/page/user?id=123',
+      success: function (res) {
+        let postId  = item.id
+        const forward_count = item.forward_count
+        console.log(forward_count)
+       
+        let forward = {
+          post: {
+            forward_count: forward_count + 1
+          }
+        }
+        var forwardStr = JSON.stringify(forward)
+        //网络请求
+        wx.request({
+          url: `${app.globalData.API_HOST}/posts/${postId}`,
+          header: {
+            "Content-Type": "application/json"
+          },
+          method: "PUT",
+          data: forwardStr,
+          success: function (res) {
+            console.log("data1111:" + JSON.stringify(res.data.data))
+            let item = that.data.dream
+            item.forward_count = res.data.data.forward_count
+            that.setData({
+              dream: item
+            })
+
+          },
+          fail: function (error) {
+            console.log(error)
+          }
+        });
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   }
 })

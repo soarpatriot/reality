@@ -3,6 +3,7 @@
   "usingComponents": {
     "preview-image": "/pages/components/preview-image",
     "forward": "/pages/components/forward",
-    "comment": "/pages/components/comment"
+    "comment": "/pages/components/comment",
+    "post-count": "/pages/components/post-count"
   }
 }

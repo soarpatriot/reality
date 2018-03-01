@@ -1,5 +1,10 @@
 
-
+.count-ares {
+  
+  display: flex;
+  direction: row;
+  justify-content: flex-end;
+}
 .progress-view{
   font-size: 12px;
   color:#767676;
@@ -67,7 +72,7 @@
     
     font-size: 10px;
     color: #888;
-    padding: 10rpx 0;
+    padding: 10rpx 60rpx;
     display: flex;
     border-top:  solid 2rpx #eee;
     border-bottom:  solid 2rpx #eee;
