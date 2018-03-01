@@ -12,6 +12,10 @@ Component({
     index: {
       type: Number,
       value: 0,
+    },
+    showCommentBtn: {
+      type: Boolean,
+      value: true
     }
   },
   ready: ()=> {

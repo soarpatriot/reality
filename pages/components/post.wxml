@@ -40,9 +40,10 @@
       <image animation="{{animationData}}" data-post-id="{{item.id}}" data-index="{{index}}" bindtap="up" class="up-image" src="../../images/{{item.up_src}}.svg" background-size="cover"></image>
       <text class="favorite">{{item.count}}</text>
     </view>
-
-    <comment item="{{item}}"></comment>
-
+    
+    <block wx:if="{{showCommentBtn}}"> 
+        <comment item="{{item}}"></comment>
+    </block>
 
   </view>
 
