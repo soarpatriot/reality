@@ -1,7 +1,11 @@
 <view class='full-container'>
+  <navbar bind:switch="onTabSwitch"></navbar>
+  <view class="posts-container">
     <block wx:for-items="{{dreams}}" wx:for-item="item" wx:key="{{index}}">
           <post item="{{item}}" index="{{index}}"/>
     </block>
+  </view>
+  
 </view>
 
 <view class="weui-loadmore" hidden="{{isHideLoadMore}}">

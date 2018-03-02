@@ -3,6 +3,7 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
     "pull-load":"../components/pull-load",
-    "post": "../components/post"
+    "post": "../components/post",
+    "navbar": "../components/navbar"
   }
 }

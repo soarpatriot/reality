@@ -3,7 +3,11 @@ import { request } from '../../utils/util.js'
 let app = getApp()
 
 Page({
-  
+  onTabSwitch: function(e) {
+    console.log(JSON.stringify(e.detail))
+    this.onLoad()
+    console.log('加载更多')
+  },
   onPullDownRefresh: function () {
     console.log("pull")
     wx.showNavigationBarLoading()

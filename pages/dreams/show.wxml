@@ -1,5 +1,5 @@
 <view class="full-container main-container">
-    
+
     <post item="{{dream}}" index="1" show-comment-btn="{{false}}"/>
     <view class="comments">
      <block wx:for-items="{{dream.comments}}" wx:for-item="item" wx:key="{{index}}">
