@@ -4,9 +4,13 @@ let app = getApp()
 
 Page({
   onTabSwitch: function(e) {
-    console.log(JSON.stringify(e.detail))
+    const { boardId } = e.detail
+    console.log(boardId)
+    this.setData({
+      boardId: boardId
+    })
     this.onLoad()
-    console.log('加载更多')
+    
   },
   onPullDownRefresh: function () {
     console.log("pull")
@@ -27,7 +31,7 @@ Page({
        
     },
     scrollTop : 0,
-
+    boardId: 0,
     url: `${app.globalData.API_HOST}/posts`,
     up: "up_button.svg",
     dreams: [],
@@ -48,8 +52,8 @@ Page({
     let page = this.data.pagination.page_number || 1
 
     direction === "more" ? page++ : page = 1
-
-    let postsUrl = `${this.data.host}/posts?page_size=10&page=${page}`
+    console.log(this.data.boardId)
+    let postsUrl = `${this.data.host}/posts?board_id=${this.data.boardId}&page_size=10&page=${page}`
     if (userId){
       postsUrl = `${postsUrl}&user_id=${userId}`
     }
@@ -74,13 +78,13 @@ Page({
           dream.favorited === true ? dream.up_src = "up_button_blue" : dream.up_src = "up_button"
         })
 
-        if (pulledDreams.length > 0) {
+        //if (pulledDreams.length > 0) {
           direction === "more" ? dreams = this.data.dreams.concat(pulledDreams) : dreams = pulledDreams
           this.setData({
             dreams: dreams
 
           })
-        }
+        //}
         this.setData({
           pagination: pagination,
         })

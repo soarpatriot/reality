@@ -2,7 +2,7 @@
 <view class="container">
 
     <view class="navbar">
-        <view class="navbar-item {{selectedTab === index ? 'selected' : ''}}" wx:for="{{tabs}}" wx:key="{{index}}" bindtap="switchTab" data-tabindex="{{index}}">{{item.name}}</view>
+        <view class="navbar-item {{selectedTab === index ? 'selected' : ''}}" wx:for="{{tabs}}" wx:key="{{index}}" bindtap="switchTab" data-tabindex="{{index}}" data-board-id="{{item.id}}">{{item.name}}</view>
     </view>
 
     <!-- 
