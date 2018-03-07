@@ -21,13 +21,17 @@
     <view class="nav-view">
       <navigator class="dream" url="../dreams/show?id={{item.id}}" hover-class="navigator-hover">{{item.dream}}</navigator>
     </view>
-    <view class="progress-view">
+
+    <!-- 
+        <view class="progress-view">
       <text>Progress: </text>
       <progress stroke-width="4" active="true" class="progress" percent="{{item.progress}}" />
       <text>{{item.progress}}%</text>
     </view>
-    <view>
+    
+    -->
 
+    <view>
       <preview-image images="{{item.images}}"></preview-image>
     </view>
     <view class="count-ares">

@@ -13,10 +13,10 @@ Component({
   data: {
     selectedTab: 0,
     tabs: [
-      { name: 'Tab1' },
-      { name: 'Tab2' },
-      { name: 'Tab3' },
-      { name: 'Tab4' },
+      { name: '出租' },
+      { name: '招聘' },
+      { name: '服务' },
+      { name: '其它' },
     ]
   },
 
