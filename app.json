@@ -14,7 +14,7 @@
     "enablePullDownRefresh": true,
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#4DBBFF",
-    "navigationBarTitleText": "梦想照进现实",
+    "navigationBarTitleText": "城市之间",
     "navigationBarTextStyle":"white"
   },
   "tabBar": {
@@ -27,13 +27,13 @@
       "pagePath": "pages/dreams/index",
       "iconPath": "images/cloud-black.png",
       "selectedIconPath": "images/cloud-blue.png",
-      "text": "梦想"
+      "text": "信息"
     }, 
     {
       "pagePath": "pages/posts/posts",
       "iconPath": "images/edit-black.png",
       "selectedIconPath": "images/edit-blue.png",
-      "text": "创建梦想"
+      "text": "发布"
     },
     {
       "pagePath": "pages/my/index",

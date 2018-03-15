@@ -2,8 +2,13 @@
 <view class="container">
     <form bindsubmit="formSubmit" bindreset="formReset">
         <view class="section">
-            <view class="section__title">梦想：</view>
-            <textarea name="dream" class="write-area"  auto-focus maxlength="400" value="{{dream}}" placeholder="我的梦想" >
+            <view class="title">发布您的信息</view>
+            <picker name="selectedIndex" mode = "selector" bindchange="bindPickerChange" value="{{selectedIndex}}" range="{{boards}}" range-key="name">
+    <view class="picker">
+      选择类别：{{boards[selectedIndex].name}}
+    </view>
+</picker>
+            <textarea name="dream" class="write-area"  auto-focus maxlength="400" value="{{dream}}" placeholder="内容" >
            
             </textarea>
             <view class="choosen-image">

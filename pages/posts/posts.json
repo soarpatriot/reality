@@ -1,6 +1,7 @@
 {
-    "navigationBarTitleText": "创建梦想",
+    "navigationBarTitleText": "城市之间",
     "usingComponents": {
-      "p-image": "/pages/components/image"
+      "p-image": "/pages/components/image",
+      "board-picker": "/pages/components/board-picker"
     }
 }

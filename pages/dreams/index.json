@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "我们的梦想",
+  "navigationBarTitleText": "城市之间",
   "enablePullDownRefresh": true,
   "usingComponents": {
     "pull-load":"../components/pull-load",

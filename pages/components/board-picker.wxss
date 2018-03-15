@@ -1,0 +1,5 @@
+/* pages/components/board-picker.wxss */
+.picker{
+  color: #666;
+  padding: 20rpx 0;
+}

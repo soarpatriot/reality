@@ -1,5 +1,6 @@
 // pages/posts/posts.js
 const qiniuUploader = require("../../utils/qiniuUploader")
+import { request } from '../../utils/util.js'
 
 var app = getApp()
 Page({
@@ -8,7 +9,42 @@ Page({
     dream: "",
     reality: "",
     images: [],
-    progress: 0
+
+    progress: 0,
+    selectedIndex: 0,
+    boards: []
+  },
+  onShow: function () {
+    console.log("show")
+    const boardUrl = `${this.data.host}/boards`
+    console.log(boardUrl)
+    request({
+      url: boardUrl,
+      header: {
+        "Content-Type": "application/json"
+      },
+      method: "GET"
+    }).then((res) => {
+
+      const boards = res.data.data
+      console.log(JSON.stringify(boards))
+      this.setData({
+        boards: boards
+        
+      })
+
+      //console.log(JSON.stringify(res.data.data))
+    }).catch((res) => {
+
+    })
+
+  },
+  bindPickerChange: function(e){
+    const selected = this.data.boards[e.detail.value]
+    this.setData({
+      selectedIndex: e.detail.value
+      
+    })
   },
   delete: function(e) {
     let { index } = e.target.dataset
@@ -22,10 +58,12 @@ Page({
     var d = e.detail.value
     d.progress = d.progress || 0 
     let user = app.user
-    console.log(user)
-    if(d.dream =="" || d.reality == ""){
+    const selectedIndex = d.selectedIndex
+    console.log(`dream: ${JSON.stringify(e.detail)}`)
+    
+    if(d.dream ==""){
       wx.showToast({
-        title: '请填写梦想和现实！',
+        title: '请填写！',
         icon: 'success',
         duration: 2000
       })
@@ -36,6 +74,7 @@ Page({
       //console.log(`transedImages dream: ${JSON.stringify(transedImages)}`)
       var dream = {
         dream: d.dream,
+        board_id: this.data.boards[selectedIndex].id,
         //reality: d.reality,
         progress: 0,
         user_id: user.id,
@@ -99,9 +138,7 @@ Page({
   onReady:function(){
     // 页面渲染完成
   },
-  onShow:function(){
-    // 页面显示
-  },
+
   onHide:function(){
     // 页面隐藏
   },

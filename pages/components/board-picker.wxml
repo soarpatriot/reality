@@ -1,0 +1,7 @@
+<!--pages/components/board-picker.wxml-->
+
+<picker name="{{name}}" mode = "selector" bindchange="bindPickerChange" value="{{selectedId}}" range="{{boards}}" range-key="name" data-selected-id="{{selectedId}}">
+    <view class="picker">
+      选择类别：{{boards[index].name}}
+    </view>
+</picker>
