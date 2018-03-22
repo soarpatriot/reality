@@ -4,6 +4,7 @@
   "usingComponents": {
     "pull-load":"../components/pull-load",
     "post": "../components/post",
-    "navbar": "../components/navbar"
+    "navbar": "../components/navbar",
+    "loader-tip": "../components/loader-tip"
   }
 }

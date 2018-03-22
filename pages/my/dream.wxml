@@ -28,3 +28,4 @@
       </view>
     </block>
 </view>
+<loader-tip hide="{{isHideLoadMore}}"></loader-tip>

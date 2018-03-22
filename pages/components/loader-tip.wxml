@@ -1,0 +1,8 @@
+<!--pages/components/loader-tip.wxml-->
+<view class="loadmore" hidden="{{hide}}">
+    
+    <image  class="loading" src="../../images/loader.svg" background-size="cover"></image>
+    <view class="tips">正在加载...</view>
+</view>
+
+
